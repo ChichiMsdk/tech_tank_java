@@ -22,7 +22,8 @@ public class People {
 		this.lastName = nameParts[1];
 		this.sex = sex.split(" ")[1];
 		this.age = age.split(" ")[1];
-		setRealAge();
+		if (setRealAge() == NULL)
+			return NULL;
 		this.gender = changeSex();
 		this.people = people;
 	}
@@ -50,7 +51,8 @@ public class People {
 		}
 		catch (DateTimeParseException e){
 			System.out.println("Error parsing date: " + e.getMessage());
-			return;
+			System.out.println("format should be: dd/mm/yy");
+			return NULL;
 		}
 		date = AddressBook.parseDate(date);
 	}

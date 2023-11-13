@@ -31,7 +31,7 @@ public class AddressBook {
 			System.out.println("Error reading file: " + e.getMessage());
 			return;
 		}
-		String[] dArgs = {"Bill McKnight", "Paul Robinson"};
+		String[] dArgs = {"Bill", "Paul"};
 		if (args.length == 3){
 			dArgs[0] = args[1];
 			dArgs[1] = args[2];
@@ -66,7 +66,7 @@ public class AddressBook {
 					" day(s) older than " + dArgs[1] );
 		}
 		else if ( daysOlder == 0){
-			System.out.println(dArgs[0]+" and "+dArgs[0]+"are the same age");
+			System.out.println(dArgs[0]+" and "+dArgs[1]+" are the same age");
 		}
 		else{
 			daysOlder = daysOlder * -1;
@@ -86,7 +86,7 @@ public class AddressBook {
 	public static People oldGuy(People oldest, List<People> people){
 		for (int i = 0; i < people.size(); i++) {
 			if (i > 0){
-				if (people.get(i).getDate().isBefore(people.get(i-1)
+				if (oldest.getDate().isAfter(people.get(i)
 							.getDate())){
 					oldest = people.get(i);
 				}

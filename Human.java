@@ -12,7 +12,7 @@ public class Human {
 	public static People getPeople(String fullName){
 		People people = peopleMap.get(fullName);
 		if (people == null){
-			System.out.println("No such person");
+			System.out.println("No such person, pls provide a valid name");
 			return null;
 		}
 		return people;
