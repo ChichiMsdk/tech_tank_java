@@ -1,18 +1,21 @@
 import java.time.LocalDate;
+import java.util.List;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Comparator;
+import java.time.Period;
 
 public class People {
+	private String fullName;
 	private String name;
 	private String lastName;
 	private String sex;
+	private int	gender;
+	private List<People> people;
 	private String age;
 	private	LocalDate date;
-	private int	gender;
-	private String fullName;
 
-	public People (String fullName, String sex, String age){
+	public People (String fullName, String sex, String age, List<People> people){
 		this.fullName = fullName;
 		String[] nameParts = fullName.split(" ");
 		this.name = nameParts[0];
@@ -21,9 +24,7 @@ public class People {
 		this.age = age.split(" ")[1];
 		setRealAge();
 		this.gender = changeSex();
-	}
-	public int getMales(){
-		return gender;
+		this.people = people;
 	}
 	public int changeSex(){
 		if (sex.compareTo("Male") == 0)
@@ -42,15 +43,6 @@ public class People {
 			return 0;
 		}
 	}
-
-	private static LocalDate parseDate(LocalDate date){
-		if (date == null)
-			return null;
-		if (date.getYear() > 2023)
-			date = date.minusYears(100);
-		return date;
-	}
-
 	private	void	setRealAge(){
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
 		try{
@@ -60,9 +52,8 @@ public class People {
 			System.out.println("Error parsing date: " + e.getMessage());
 			return;
 		}
-		date = parseDate(date);
+		date = AddressBook.parseDate(date);
 	}
-
 	public LocalDate getDate(){
 		return date;
 	}
@@ -75,10 +66,21 @@ public class People {
 	public String getLastName(){
 		return lastName;
 	}
-	public String getGender(){
+	public int getGender(){
+		return gender;
+	}
+	public String getSex(){
 		return sex;
 	}
 	public String getAge(){
 		return age;
+	}
+	public int getMales(){
+		int maleCount = 0;
+		for ( int i = 0; i < people.size(); i++){
+			if (people.get(i).getGender() == 1)
+				maleCount++;
+		}
+		return maleCount;
 	}
 }
