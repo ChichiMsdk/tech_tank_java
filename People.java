@@ -51,7 +51,6 @@ public class People {
 		catch (DateTimeParseException e){
 			System.out.println("Error parsing date: " + e.getMessage());
 			System.out.println("format should be: dd/mm/yy");
-			//exit program
 			System.exit(1);
 		}
 		date = AddressBook.parseDate(date);

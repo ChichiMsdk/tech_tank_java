@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 public class AddressBook {
 
     public static void main(String[] args) {
-		if (args.length <= 1 || args.length > 3) {
+		if (args.length < 1 || args.length > 3) {
 			System.out.println("Usage: java HelloWorld <filename> <name1>"+ 
 					"(<name2> names are optional)");
 			return;

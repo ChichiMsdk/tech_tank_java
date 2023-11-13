@@ -12,8 +12,8 @@ public class Human {
 	public static People getPeople(String fullName){
 		People people = peopleMap.get(fullName);
 		if (people == null){
-			System.out.println("No such person, pls provide a valid name");
-			return null;
+			System.out.println("Not found, please provide (a) valid name(s)");
+			System.exit(1);
 		}
 		return people;
 	}
