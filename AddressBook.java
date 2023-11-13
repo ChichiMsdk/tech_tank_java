@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 public class AddressBook {
 
     public static void main(String[] args) {
-		if (args.length < 1 || args.length > 3) {
+		if (args.length <= 1 || args.length > 3) {
 			System.out.println("Usage: java HelloWorld <filename> <name1>"+ 
 					"(<name2> names are optional)");
 			return;
@@ -36,7 +36,9 @@ public class AddressBook {
 			dArgs[0] = args[1];
 			dArgs[1] = args[2];
 		}
-		int maleCount = people.get(4).getMales();
+		else
+			System.out.println("--Not enough arguments, using default names--");
+		int maleCount = people.get(0).getMales();
 		People oldest = people.get(0);
 		oldest = oldGuy(oldest, people);
 		int femaleCount = people.size() - maleCount;
@@ -78,11 +80,11 @@ public class AddressBook {
 	public static LocalDate parseDate(LocalDate date){
 		if (date == null)
 			return null;
+		//birth date cant be after 2023 anyway.
 		if (date.getYear() > 2023)
 			date = date.minusYears(100);
 		return date;
 	}
-	//trying to make everything in one loop
 	public static People oldGuy(People oldest, List<People> people){
 		for (int i = 0; i < people.size(); i++) {
 			if (i > 0){

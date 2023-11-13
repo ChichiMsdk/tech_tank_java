@@ -22,8 +22,7 @@ public class People {
 		this.lastName = nameParts[1];
 		this.sex = sex.split(" ")[1];
 		this.age = age.split(" ")[1];
-		if (setRealAge() == NULL)
-			return NULL;
+		setRealAge();
 		this.gender = changeSex();
 		this.people = people;
 	}
@@ -52,7 +51,8 @@ public class People {
 		catch (DateTimeParseException e){
 			System.out.println("Error parsing date: " + e.getMessage());
 			System.out.println("format should be: dd/mm/yy");
-			return NULL;
+			//exit program
+			System.exit(1);
 		}
 		date = AddressBook.parseDate(date);
 	}
@@ -77,6 +77,7 @@ public class People {
 	public String getAge(){
 		return age;
 	}
+	//there should be a better way to do this, not sure.. feels off
 	public int getMales(){
 		int maleCount = 0;
 		for ( int i = 0; i < people.size(); i++){

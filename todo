@@ -1,3 +1,4 @@
+!!! Check the parsing and just exit if not good (if male or female is written etc)
 -- Probably check for "leaks" ? Idk 
 -- Null check ? Idk
 -- Add Readme ? I do not know !
