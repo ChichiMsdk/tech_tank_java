@@ -1,10 +1,20 @@
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Comparator;
+
 public class People {
 
 	private String name;
 	private String lastName;
 	private String sex;
 	private String age;
-	private int	date;
+	private	LocalDate realAge;
 	private int	gender;
 	private String fullName;
 	public People (String fullName, String sex, String age){
@@ -27,6 +37,27 @@ public class People {
 			return 2;
 		else
 			return 0;
+	}
+	public void	setRealAge(){
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
+		try{
+			realAge = LocalDate.parse(age, format);
+		}
+		catch (DateTimeParseException e){
+			System.out.println("Error parsing date: " + e.getMessage());
+			return;
+		}
+		realAge = parseDate(realAge);
+	}
+	private static LocalDate parseDate(LocalDate date){
+		if (date == null)
+			return null;
+		if (date.getYear() > 2023)
+			date = date.minusYears(100);
+		return date;
+	}
+	public LocalDate getRealAge(){
+		return realAge;
 	}
 	public String getFullName(){
 		return fullName;
