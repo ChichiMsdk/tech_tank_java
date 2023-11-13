@@ -19,6 +19,7 @@ public class People {
 	public int getMales(){
 		return gender;
 	}
+	//maybe this is faster to compare rather than strings every time? idk
 	public int changeSex(){
 		if (sex.compareTo("Male") == 0)
 			return 1;
