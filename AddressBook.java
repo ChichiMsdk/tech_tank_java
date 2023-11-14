@@ -1,11 +1,7 @@
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 
 public class AddressBook {
 
@@ -15,50 +11,24 @@ public class AddressBook {
 					"(<name2> names are optional)");
 			return;
 		}
-		String[] dArgs = {"Bill", "Paul"};
-		List<People> people = createPeopleList(args, dArgs);
+		String[] dArgs = { "Bill", "Paul" };
+		List<People> people = createPplList(args, dArgs);
 		int maleCount = people.get(0).getMales();
 		People oldest = oldGuy(people);
 		int femaleCount = people.size() - maleCount;
-		long daysBetween = ChronoUnit.DAYS.between(
-				Human.getPeople(dArgs[0]).getBirthDate(), 
-				Human.getPeople(dArgs[1]).getBirthDate());
-		printAnswers(femaleCount, maleCount, oldest, daysBetween, dArgs);
+		People[] pplCompare = { Human.getPeople(dArgs[0]), 
+				Human.getPeople(dArgs[1]) };
+		long daysOlder = Human.findDaysOlder(pplCompare[0], pplCompare[1]);
+		String[] dArgs2 = { pplCompare[0].getFullName(), pplCompare[1]
+				.getFullName() };
+		Answers.printAnswers(femaleCount, maleCount, oldest, daysOlder, dArgs2);
     }
 
-	public static void printAnswers(int femaleCount, int maleCount, 
-			People oldest, long daysOlder, String[] dArgs) {
-		String day = "days";
-		System.out.println("The oldest person is " + oldest.getFullName());
-		if (maleCount > 1) {
-			System.out.println("There are " + maleCount + " males.");
-		} else {
-			System.out.println("There is " + maleCount + " male.");
-		}
-/*adding females not asked
-		System.out.println("There are " + maleCount + " male(s) and "
-				+ femaleCount + " female(s)"); */
-		if (daysOlder > 0) {
-			day = "day";
-			System.out.println( dArgs[0] + " is " + daysOlder + " " 
-					+ day + " older than " + dArgs[1] );
-		} else if ( daysOlder == 0) {
-			System.out.println(dArgs[0]+" and "+dArgs[1]+" are the same age");
-		} else {
-			if (daysOlder == -1) {
-				day = "day";
-			}
-			daysOlder = daysOlder * -1;
-			System.out.println( dArgs[1] + " is " + daysOlder + " "
-					+ day + " older than " + dArgs[0] );
-		}
-	}
-
-	public static List<People> createPeopleList(String[] args, String[] dArgs) {
-			FileParser.ParsePeople(args, dArgs);
-			List<People> people = FileParser.getPeopleList();
-			FileParser.AddPeople(people);
-			return people;
+	public static List<People> createPplList(String[] args, String[] dArgs) {
+		FileParser.ParsePeople(args, dArgs);
+		List<People> people = FileParser.getPeopleList();
+		FileParser.AddPeople(people);
+		return people;
 	}
 
 	public static People oldGuy(List<People> people) {

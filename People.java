@@ -53,6 +53,17 @@ public class People {
 		}
 		birthDate = FileParser.parseDate(birthDate);
 	}
+
+	public int getMales() {
+		int maleCount = 0;
+		for ( int i = 0; i < people.size(); i++) {
+			if (people.get(i).getGenderInt() == 1) {
+				maleCount++;
+			}
+		}
+		return maleCount;
+	}
+
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
@@ -73,15 +84,5 @@ public class People {
 	}
 	public String getBirthString() {
 		return birthString;
-	}
-	//there should be a better way to do this, not sure.. feels off
-	public int getMales() {
-		int maleCount = 0;
-		for ( int i = 0; i < people.size(); i++) {
-			if (people.get(i).getGenderInt() == 1) {
-				maleCount++;
-			}
-		}
-		return maleCount;
 	}
 }
