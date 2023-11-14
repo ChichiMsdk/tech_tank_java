@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.time.Period;
 
 public class People {
-
 	private String fullName;
 	private String name;
 	private String lastName;
@@ -28,63 +27,59 @@ public class People {
 		this.genderInt = setGenderToInt();
 		this.people = people;
 	}
-	public int setGenderToInt(){
-		if (genderString.compareTo("Male") == 0)
-		{
+	public int setGenderToInt() {
+		if (genderString.compareTo("Male") == 0) {
 			//"John is a <male>." rather than "John is a <Male>."
 			genderString = "male";
 			return 1;
 		}
-		if (genderString.compareTo("Female") == 0)
-		{
+		if (genderString.compareTo("Female") == 0) {
 			genderString = "female";
 			return 2;
-		}
-		else
-		{
+		} else {
 			genderString = "N/A";
 			return 0;
 		}
 	}
-	private	void	setBirthDate(){
+	private	void setBirthDate() {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
-		try{
+		try {
 			birthDate = LocalDate.parse(birthString, format);
-		}
-		catch (DateTimeParseException e){
+		} catch (DateTimeParseException e) {
 			System.out.println("Error parsing date: " + e.getMessage());
 			System.out.println("format should be: dd/mm/yy");
 			System.exit(1);
 		}
 		birthDate = AddressBook.parseDate(birthDate);
 	}
-	public LocalDate getBirthDate(){
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-	public String getFullName(){
+	public String getFullName() {
 		return fullName;
 	}
-	public String getName(){
+	public String getName() {
 		return name;
 	}
-	public String getLastName(){
+	public String getLastName() {
 		return lastName;
 	}
-	public int getGenderInt(){
+	public int getGenderInt() {
 		return genderInt;
 	}
-	public String getGenderString(){
+	public String getGenderString() {
 		return genderString;
 	}
-	public String getBirthString(){
+	public String getBirthString() {
 		return birthString;
 	}
 	//there should be a better way to do this, not sure.. feels off
-	public int getMales(){
+	public int getMales() {
 		int maleCount = 0;
-		for ( int i = 0; i < people.size(); i++){
-			if (people.get(i).getGenderInt() == 1)
+		for ( int i = 0; i < people.size(); i++) {
+			if (people.get(i).getGenderInt() == 1) {
 				maleCount++;
+			}
 		}
 		return maleCount;
 	}
