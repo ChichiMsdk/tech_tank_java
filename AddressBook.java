@@ -18,14 +18,19 @@ public class AddressBook {
 	 * <b>string</b></p></pre>
 	 * @param args the arguments passed to the program
 	 */
+
     public static void main(String[] args) {
 		if (args.length < 1 || args.length > 3) {
 			System.out.println("Usage: java HelloWorld <filename> <name1>"+ 
 					"(<name2> names are optional)");
 			return;
 		}
-		String[] dArgs = { "Bill", "Paul" }; //default names
+		String[] dArgs = { "Bill", "Paul" };
 		List<People> people = Helper.initListAndParsing(args, dArgs);
+		if (people.isEmpty()){
+			System.out.println("Error: no one is here..");
+			System.exit(1);
+		}
 		int maleCount = Answers.getMalesNbr(people);
 		People oldest = Answers.getOldest(people);
 		dArgs = ComparePpl.getFullNames(dArgs); // can change

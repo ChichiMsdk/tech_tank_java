@@ -25,9 +25,12 @@ public class FileParser{
 	 * @param dArgs the names of the people to compare
 	 */
 	public static void ParsePeople(String[] args, String[] dArgs){
-		List<People> people = new ArrayList<>();
 		try { 
 			List<String> lines = Files.readAllLines(Paths.get(args[0]));
+			if (lines.isEmpty()) {
+				System.err.println("Error: file is empty, no one is here..");
+				System.exit(1);
+			}
 			setPeopleListAndLines(people, lines);
 		} catch (IOException e) {
 			System.err.println("Error reading file: " + e.getMessage());
@@ -63,9 +66,13 @@ public class FileParser{
 		String[] parts = lines.split(",");
 		if (parts.length != 3) {
 			System.err.println("Error parsing line: " + lines);
-			System.out.println(parts.length + " commas found, 3 expected");
+			System.err.println(parts.length + " commas found, expected 3");
 			System.out.println("Skipping line...");
+			//maybe stop the program here ? I don't know.
 			return null;
+		}
+		for ( int i = 0; i < parts.length; i++) {
+			parts[i] = parts[i].trim();
 		}
 		return parts;
 	}

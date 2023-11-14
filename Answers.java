@@ -50,6 +50,9 @@ public class Answers{
 
 	public static People getOldest(List<People> people) {
 			People oldest = people.get(0);
+			if (people.size() <= 0) {
+				return null;
+			}
 			for (int i = 0; i < people.size(); i++) {
 				if (i > 0) {
 					if (oldest.getBirthDate().isAfter(people.get(i)

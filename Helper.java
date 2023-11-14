@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 public class Helper{
 	public static String[] nameSplit(String str){
-		String trimmed = str.replaceFirst("^\\s+", "");
-		//does this return a copy?..
 		String[] parts = new String[2];
-		parts = trimmed.split(" ");
+		parts = str.split(" ");
 		try{
 			if (parts[1] == null || parts[0].isEmpty()){
 				System.err.println("Warning: (last) name is missing.");

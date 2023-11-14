@@ -33,8 +33,8 @@ public class People {
 		this.name = nameParts[0];
 		this.lastName = nameParts[1];
 		this.fullName = nameParts[0] + " " + nameParts[1];
-		this.genderString = genderString.split(" ")[1];
-		this.birthString = birthString.split(" ")[1];
+		this.genderString = genderString;
+		this.birthString = birthString;
 		setBirthDate();
 		this.genderInt = Helper.changeGenderToInt(this.genderString,
 				this.fullName);
@@ -46,6 +46,7 @@ public class People {
 	}
 
 	private	void setBirthDate() {
+		//probably better to do while parsing..
 		this.birthDate = HelperDate.formatDate(birthString);
 	}
 
