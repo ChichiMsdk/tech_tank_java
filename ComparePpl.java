@@ -7,6 +7,7 @@ public class ComparePpl{
 		ComparePpl.pplCompare[0] = Human.getPeople(dArgs[0]);
 		ComparePpl.pplCompare[1] = Human.getPeople(dArgs[1]);
 		setNames();
+		HelperDate.setDaysOlder();
 	}
 	private static void setNames() {
 		ComparePpl.pplNames[0] = pplCompare[0].getFullName();

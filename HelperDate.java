@@ -4,7 +4,7 @@ public class HelperDate{
 
 	private static long daysOlder;
 
-	private static void setDaysOlder() {
+	public static void setDaysOlder() {
 		daysOlder = compareDays(ComparePpl.getPplCompare()[0],
 				ComparePpl.getPplCompare()[1]);
 	}
@@ -25,7 +25,6 @@ public class HelperDate{
 	}
 */
 	public static long getDaysOlder() {
-		setDaysOlder();
 		return daysOlder;
 	}
 }

@@ -39,6 +39,7 @@ public class FileParser{
 	private static void addPeople(List<People> people){
 		int j =0;
 			for (String line : lines) {
+
 				String[] parts = line.split(",");
 				people.add(new People(parts[0], parts[1], parts[2]));
 				Human.addPeople(people.get(j));
