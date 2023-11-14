@@ -1,3 +1,11 @@
+/**
+ * FileParser.java
+ * 
+ * This class is used to parse the file and create a list of people
+ * 
+ * @version 1.0 1/22/2017
+ * 
+ */
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -45,22 +53,6 @@ public class FileParser{
 				Human.addPeople(people.get(j));
 				j++;
 			}
-	}
-
-	public static LocalDate formatDate(String birthString) {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
-		LocalDate date = null;
-		try {
-			date = LocalDate.parse(birthString, format);
-		} catch (DateTimeParseException e) {
-			System.out.println("Error parsing date: " + e.getMessage());
-			System.out.println("format should be: dd/mm/yy");
-			System.exit(1);
-		}
-		if (date.getYear() > 2023) {
-			date = date.minusYears(100);	//if birth < 1923, assume 1923
-		}
-		return date;
 	}
 
 	public static List<People> getPeopleList(){

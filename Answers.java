@@ -1,9 +1,27 @@
 import java.util.List;
-
+/**
+ * The {@code Answers} class is used to print the answers to the questions
+ * asked in the assignment but also recover the required values.
+ * <p> This class contains the following useful methods:
+ * <ul><pre>{@code printAll}</pre></ul>
+ * <ul><pre>{@code getOldest}</pre></ul>
+ * <ul><pre>{@code getMalesNbr}</pre></ul>
+ * </p>
+ */
 public class Answers{
 		
-	private static People oldest;
-
+	/**
+	 * Prints the answers to the questions asked in the assignment.
+	 * in a formatted way.
+	 * <p> This method adapts the output displayed to the user depending
+	 * on the actual values of the variables.</p>
+	 * <p><b>I.e:</b> if they are the same age or dArgs[0] is > dArgs[1] etc..
+	 * </p>
+	 * @param maleCount the number of males in the list
+	 * @param oldest the oldest person in the list
+	 * @param daysOlder the number of days older between the two people
+	 * @param dArgs the names of the people to compare
+	 */
 	public static void printAll(int maleCount, People oldest,
 			long daysOlder, String[] dArgs) {
 		String day = "days";
@@ -30,16 +48,16 @@ public class Answers{
 	}
 
 	public static People getOldest(List<People> people) {
-			Answers.oldest = people.get(0);
+			People oldest = people.get(0);
 			for (int i = 0; i < people.size(); i++) {
 				if (i > 0) {
-					if (Answers.oldest.getBirthDate().isAfter(people.get(i)
+					if (oldest.getBirthDate().isAfter(people.get(i)
 								.getBirthDate())) {
-						Answers.oldest = people.get(i);
+						oldest = people.get(i);
 					}
 				}
 			}
-			return Answers.oldest;
+			return oldest;
 		}
 	
 	public static int getMalesNbr(List<People> people) {

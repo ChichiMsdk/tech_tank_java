@@ -1,3 +1,20 @@
+/**
+ * {@code People} class is a class that contains information of a person
+ *<p> This class contains the following information:
+ *<ul>
+ *<li>full name</li>
+ *<li>name</li>
+ *<li>LastName</li>
+ *<li>age</li>
+ *<li>birthDate</li>
+ *
+ * @see Helper
+ * @see HelperDate
+ * @see ComparePpl
+ * @see Answers
+ * @see Human
+ * @see AddressBook
+ */
 import java.time.LocalDate;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
@@ -7,13 +24,14 @@ import java.time.Period;
 
 public class People {
 
-	private String fullName;
-	private String name;
-	private String lastName;
-	private String genderString;
-	private int	genderInt;
-	private String birthString;
-	private	LocalDate birthDate;
+	private String 		fullName;
+	private String 		name;
+	private String 		lastName;
+	private String 		genderString;
+	private int			genderInt;
+	private String 		birthString;
+	private	LocalDate 	birthDate;
+	private int 		age;
 
 	public People (String fullName, String genderString, String birthString) {
 		String[] nameParts = Helper.nameSplit(fullName);
@@ -25,10 +43,19 @@ public class People {
 		setBirthDate();
 		this.genderInt = Helper.changeGenderToInt(this.genderString,
 				this.fullName);
+		setAge();
+	}
+
+	private void setAge() {
+		this.age = HelperDate.getAge(this.birthDate);
 	}
 
 	private	void setBirthDate() {
-		this.birthDate = FileParser.formatDate(birthString);
+		this.birthDate = HelperDate.formatDate(birthString);
+	}
+
+	public int getAge() {
+		return age;
 	}
 
 	public LocalDate getBirthDate() {

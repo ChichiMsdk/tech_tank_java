@@ -1,5 +1,4 @@
 import java.util.List;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ArrayList;
 
@@ -35,7 +34,14 @@ public class Helper{
 		}
 		return parts;
 	}
-
+	/**
+	 * Returns a list of {@code People} objects.
+	 * {@code People} objects are created from the file in {@see ParsePeople}
+	 * and added to the list.
+	 * @param args the command line arguments
+	 * @param dArgs the default names
+	 * @return the list of {@code People} objects
+	 */
 	public static List<People> initListAndParsing(String[] args,
 			String[] dArgs) {
 		FileParser.ParsePeople(args, dArgs);
