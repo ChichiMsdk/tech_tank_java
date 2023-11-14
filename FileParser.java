@@ -18,7 +18,7 @@ public class FileParser{
 			List<String> lines = Files.readAllLines(Paths.get(args[0]));
 			setPeopleListAndLines(people, lines);
 		} catch (IOException e) {
-			System.out.println("Error reading file: " + e.getMessage());
+			System.err.println("Error reading file: " + e.getMessage());
 			System.exit(1);
 		}
 		if (args.length == 3){
@@ -27,16 +27,16 @@ public class FileParser{
 		} else {
 			System.out.println("-Not enough <names>, using default ones-");
 		}
-		AddPeople(people);
+		addPeople(people);
 	}
 
-	public static void setPeopleListAndLines(List<People> people, 
+	private static void setPeopleListAndLines(List<People> people, 
 			List<String> lines){
 		FileParser.people = people;
 		FileParser.lines = lines;
 	}
 
-	public static void AddPeople(List<People> people){
+	private static void addPeople(List<People> people){
 		int j =0;
 			for (String line : lines) {
 				String[] parts = line.split(",");
@@ -57,7 +57,7 @@ public class FileParser{
 			System.exit(1);
 		}
 		if (date.getYear() > 2023) {
-			date = date.minusYears(100);	//birth < 1923, assume 1923
+			date = date.minusYears(100);	//if birth < 1923, assume 1923
 		}
 		return date;
 	}

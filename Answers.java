@@ -1,4 +1,8 @@
+import java.util.List;
+
 public class Answers{
+		
+	private static People oldest;
 
 	public static void printAll(int maleCount, People oldest,
 			long daysOlder, String[] dArgs) {
@@ -23,5 +27,28 @@ public class Answers{
 			System.out.println( dArgs[1] + " is " + daysOlder + " "
 					+ day + " older than " + dArgs[0] );
 		}
+	}
+
+	public static People getOldest(List<People> people) {
+			Answers.oldest = people.get(0);
+			for (int i = 0; i < people.size(); i++) {
+				if (i > 0) {
+					if (Answers.oldest.getBirthDate().isAfter(people.get(i)
+								.getBirthDate())) {
+						Answers.oldest = people.get(i);
+					}
+				}
+			}
+			return Answers.oldest;
+		}
+	
+	public static int getMalesNbr(List<People> people) {
+		int maleCount = 0;
+		for ( int i = 0; i < people.size(); i++) {
+			if (people.get(i).getGenderInt() == 1) {
+				maleCount++;
+			}
+		}
+		return maleCount;
 	}
 }

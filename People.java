@@ -15,53 +15,46 @@ public class People {
 	private String birthString;
 	private	LocalDate birthDate;
 
-	public People (String fullName, String genderString, String birthString){
-		String[] nameParts = AddressBook.nameSplit(fullName);
+	public People (String fullName, String genderString, String birthString) {
+		String[] nameParts = Helper.nameSplit(fullName);
 		this.name = nameParts[0];
 		this.lastName = nameParts[1];
 		this.fullName = nameParts[0] + " " + nameParts[1];
 		this.genderString = genderString.split(" ")[1];
 		this.birthString = birthString.split(" ")[1];
 		setBirthDate();
-		this.genderInt = changeGenderToInt();
+		this.genderInt = Helper.changeGenderToInt(this.genderString,
+				this.fullName);
 	}
-	public int changeGenderToInt() {
-		if (genderString.compareTo("Male") == 0
-				|| genderString.compareTo("male") == 0) {
-			return 1;
-		}
-		if (genderString.compareTo("Female") == 0
-				|| genderString.compareTo("female") == 0) {
-			return 2;
-		} else {
-			System.out.println("Warning: could not retrieve gender of "
-					+ fullName + ". Please check the file next time.");
-			return 0;
-		}
-	}
-	private	void setBirthDate() {
 
+	private	void setBirthDate() {
 		this.birthDate = FileParser.formatDate(birthString);
 	}
 
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
+
 	public String getFullName() {
 		return fullName;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public int getGenderInt() {
 		return genderInt;
 	}
+
 	public String getGenderString() {
 		return genderString;
 	}
+
 	public String getBirthString() {
 		return birthString;
 	}
