@@ -14,7 +14,7 @@ public class AddressBook {
 		String[] dArgs = { "Bill", "Paul" };
 		List<People> people = createPplList(args, dArgs);
 		int maleCount = people.get(0).getMales();
-		People oldest = oldGuy(people);
+		People oldest = findOldest(people);
 		int femaleCount = people.size() - maleCount;
 		People[] pplCompare = { Human.getPeople(dArgs[0]), 
 				Human.getPeople(dArgs[1]) };
@@ -31,7 +31,7 @@ public class AddressBook {
 		return people;
 	}
 
-	public static People oldGuy(List<People> people) {
+	public static People findOldest(List<People> people) {
 		People oldest = people.get(0);
 		for (int i = 0; i < people.size(); i++) {
 			if (i > 0) {
