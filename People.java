@@ -12,12 +12,10 @@ public class People {
 	private String lastName;
 	private String genderString;
 	private int	genderInt;
-	private List<People> people;
 	private String birthString;
 	private	LocalDate birthDate;
 
-	public People (String fullName, String genderString, String birthString,
-			List<People> people){
+	public People (String fullName, String genderString, String birthString){
 		this.fullName = fullName;
 		String[] nameParts = fullName.split(" ");
 		this.name = nameParts[0];
@@ -25,43 +23,22 @@ public class People {
 		this.genderString = genderString.split(" ")[1];
 		this.birthString = birthString.split(" ")[1];
 		setBirthDate();
-		this.genderInt = setGenderToInt();
-		this.people = people;
+		setGenderToInt();
 	}
-	public int setGenderToInt() {
+	public void setGenderToInt() {
 		if (genderString.compareTo("Male") == 0) {
-			//"John is a <male>." rather than "John is a <Male>."
-			genderString = "male";
-			return 1;
+			thsi.genderInt = 1;
 		}
 		if (genderString.compareTo("Female") == 0) {
-			genderString = "female";
-			return 2;
+			this.genderInt = 2;
 		} else {
 			genderString = "N/A";
-			return 0;
+			this.genderInt = 0;
 		}
 	}
 	private	void setBirthDate() {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
-		try {
-			birthDate = LocalDate.parse(birthString, format);
-		} catch (DateTimeParseException e) {
-			System.out.println("Error parsing date: " + e.getMessage());
-			System.out.println("format should be: dd/mm/yy");
-			System.exit(1);
-		}
-		birthDate = FileParser.parseDate(birthDate);
-	}
 
-	public int getMales() {
-		int maleCount = 0;
-		for ( int i = 0; i < people.size(); i++) {
-			if (people.get(i).getGenderInt() == 1) {
-				maleCount++;
-			}
-		}
-		return maleCount;
+		this.birthDate = FileParser.formatDate(birthString);
 	}
 
 	public LocalDate getBirthDate() {

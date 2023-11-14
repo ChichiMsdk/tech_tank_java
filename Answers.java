@@ -1,7 +1,7 @@
 public class Answers{
 
-	public static void printAnswers(int femaleCount, int maleCount, 
-			People oldest, long daysOlder, String[] dArgs) {
+	public static void printAll(int maleCount, People oldest,
+			long daysOlder, String[] dArgs) {
 		String day = "days";
 		System.out.println("The oldest person is " + oldest.getFullName());
 		if (maleCount > 1) {

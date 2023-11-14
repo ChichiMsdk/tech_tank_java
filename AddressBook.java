@@ -13,34 +13,23 @@ public class AddressBook {
 		}
 		String[] dArgs = { "Bill", "Paul" };
 		List<People> people = createPplList(args, dArgs);
-		int maleCount = people.get(0).getMales();
-		People oldest = findOldest(people);
-		int femaleCount = people.size() - maleCount;
-		People[] pplCompare = { Human.getPeople(dArgs[0]), 
-				Human.getPeople(dArgs[1]) };
-		long daysOlder = Human.findDaysOlder(pplCompare[0], pplCompare[1]);
-		String[] dArgs2 = { pplCompare[0].getFullName(), pplCompare[1]
-				.getFullName() };
-		Answers.printAnswers(femaleCount, maleCount, oldest, daysOlder, dArgs2);
+		
+		int maleCount = Human.getMalesNbr(people);
+		People oldest = Human.getOldest(people);
+		dArgs = getOlder(dArgs);
+		Answers.printAll(maleCount, oldest, ComparePplAge.getDaysOlder(),
+				dArgs);
     }
+	public static String[] getOlder(String[] dArgs){
+		String[] older = new String[2];
+		ComparePplAge.setPplCompare(dArgs);
+		older = ComparePplAge.getPplNames();
+		return older;
+	}
 
 	public static List<People> createPplList(String[] args, String[] dArgs) {
 		FileParser.ParsePeople(args, dArgs);
 		List<People> people = FileParser.getPeopleList();
-		FileParser.AddPeople(people);
 		return people;
-	}
-
-	public static People findOldest(List<People> people) {
-		People oldest = people.get(0);
-		for (int i = 0; i < people.size(); i++) {
-			if (i > 0) {
-				if (oldest.getBirthDate().isAfter(people.get(i)
-							.getBirthDate())) {
-					oldest = people.get(i);
-				}
-			}
-		}
-		return oldest;
 	}
 }
