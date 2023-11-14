@@ -25,6 +25,7 @@ public class AddressBook {
 		List<People> people = FileParser.getPeopleList();
 		return people;
 	}
+
 	public static String[] nameSplit(String str){
 		String trim = str.replaceFirst("^\\s+", "");
 		String[] parts = new String[2];
@@ -37,7 +38,7 @@ public class AddressBook {
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			if (parts[0].isEmpty()){
-				System.out.println("Warning: empty name found.. still added.");
+				System.err.println("Warning: empty name found.. still added.");
 				String[] part = {"N/A", "N/A"};
 				return part;
 			}
