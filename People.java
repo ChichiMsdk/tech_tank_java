@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.time.Period;
 
 public class People {
+
 	private String fullName;
 	private String name;
 	private String lastName;
@@ -50,7 +51,7 @@ public class People {
 			System.out.println("format should be: dd/mm/yy");
 			System.exit(1);
 		}
-		birthDate = AddressBook.parseDate(birthDate);
+		birthDate = FileParser.parseDate(birthDate);
 	}
 	public LocalDate getBirthDate() {
 		return birthDate;

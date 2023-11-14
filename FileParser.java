@@ -3,6 +3,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class FileParser{
 	private static List<People> people = new ArrayList<>();
@@ -39,6 +40,13 @@ public class FileParser{
 				Human.addPeople(people.get(j));
 				j++;
 			}
+	}
+
+	public static LocalDate parseDate(LocalDate date) {
+		if (date.getYear() > 2023) {
+			date = date.minusYears(100);	//birth < 1923, assume 1923
+		}
+		return date;
 	}
 
 	public static List<People> getPeopleList(){

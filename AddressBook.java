@@ -8,6 +8,7 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
 public class AddressBook {
+
     public static void main(String[] args) {
 		if (args.length < 1 || args.length > 3) {
 			System.out.println("Usage: java HelloWorld <filename> <name1>"+ 
@@ -58,13 +59,6 @@ public class AddressBook {
 			List<People> people = FileParser.getPeopleList();
 			FileParser.AddPeople(people);
 			return people;
-	}
-
-	public static LocalDate parseDate(LocalDate date) {
-		if (date.getYear() > 2023) {
-			date = date.minusYears(100);	//birth < 1923, assume 1923
-		}
-		return date;
 	}
 
 	public static People oldGuy(List<People> people) {
