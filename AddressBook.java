@@ -7,6 +7,7 @@ import java.time.Period;
  * {@code AddressBook} is the main class of the program.
  * It is used to run the program with the {@code main} method.
  *
+ *@author <b>Moussadyk Chihab</b>
  */
 public class AddressBook {
 
@@ -30,6 +31,5 @@ public class AddressBook {
 		dArgs = ComparePpl.getFullNames(dArgs); // can change
 		long daysOlder = HelperDate.getDaysOlder();
 		Answers.printAll(maleCount, oldest, daysOlder, dArgs);
-		System.out.println(Human.getAge(dArgs[0]));
     }
 }

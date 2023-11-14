@@ -1,14 +1,13 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * The {@code Human} class is used to store the {@code People} objects
  * in map. The goal is to retrieve the {@code People} object from the map
  * using the name directly.
  *
- *@author Moussadyk Chihab
  */
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Human {
 
@@ -25,6 +24,7 @@ public class Human {
 	 * {@code People} object's full name, name or last name as key.
 	 * @param name the name of the {@code People} object
 	 * @return the {@code People} object
+	 * <p>{@code exit} if the string is not found</p>
 	 */
 
 	public static People getPeople(String name){

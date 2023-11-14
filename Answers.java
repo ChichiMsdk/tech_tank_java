@@ -22,6 +22,7 @@ public class Answers{
 	 * @param daysOlder the number of days older between the two people
 	 * @param dArgs the names of the people to compare
 	 */
+
 	public static void printAll(int maleCount, People oldest,
 			long daysOlder, String[] dArgs) {
 		String day = "days";

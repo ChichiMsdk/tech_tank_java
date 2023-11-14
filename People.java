@@ -1,3 +1,10 @@
+import java.time.LocalDate;
+import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Comparator;
+import java.time.Period;
+
 /**
  * {@code People} class is a class that contains information of a person
  *<p> This class contains the following information:
@@ -8,19 +15,7 @@
  *<li>age</li>
  *<li>birthDate</li>
  *
- * @see Helper
- * @see HelperDate
- * @see ComparePpl
- * @see Answers
- * @see Human
- * @see AddressBook
  */
-import java.time.LocalDate;
-import java.util.List;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Comparator;
-import java.time.Period;
 
 public class People {
 
