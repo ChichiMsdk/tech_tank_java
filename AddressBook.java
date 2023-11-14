@@ -32,7 +32,7 @@ public class AddressBook {
 		parts = trim.split(" ");
 		try{
 			if (parts[1] == null || parts[0].isEmpty()){
-				System.out.println("TRY Warning: (last) name is missing.");
+				System.err.println("TRY Warning: (last) name is missing.");
 				String[] part = {parts[1], "N/A"};
 				return part;
 			}
@@ -42,13 +42,13 @@ public class AddressBook {
 				String[] part = {"N/A", "N/A"};
 				return part;
 			}
-			System.out.println("CATCH Warning: (last) name is missing.");
+			System.err.println("CATCH Warning: (last) name is missing.");
 			String[] part = {parts[0], "N/A"};
 			return part;
 		}
 		try{
 			if (parts[2] != null){
-			System.out.println("Warning: last name has more than" 
+			System.err.println("Warning: last name has more than" 
 					+" one space allowed. Please check the file next time.");
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {

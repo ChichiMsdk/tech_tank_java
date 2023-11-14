@@ -1,6 +1,4 @@
 !! Check the parsing and just exit if not good (if male or female is written etc)
 !! Cases to check => Same person, same name, empty file, one person only.. 
 -! ^^ make tests for such
--! Probably check for "leaks" ? Idk 
--- Null check ? Idk
 -- Add Readme ? I do not know !
