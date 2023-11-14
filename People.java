@@ -16,24 +16,23 @@ public class People {
 	private	LocalDate birthDate;
 
 	public People (String fullName, String genderString, String birthString){
-		this.fullName = fullName;
-		String[] nameParts = fullName.split(" ");
+		String[] nameParts = AddressBook.nameSplit(fullName);
 		this.name = nameParts[0];
 		this.lastName = nameParts[1];
+		this.fullName = nameParts[0] + " " + nameParts[1];
 		this.genderString = genderString.split(" ")[1];
 		this.birthString = birthString.split(" ")[1];
 		setBirthDate();
-		setGenderToInt();
+		this.genderInt = changeGenderToInt();
 	}
-	public void setGenderToInt() {
+	public int changeGenderToInt() {
 		if (genderString.compareTo("Male") == 0) {
-			thsi.genderInt = 1;
+			return 1;
 		}
 		if (genderString.compareTo("Female") == 0) {
-			this.genderInt = 2;
+			return 2;
 		} else {
-			genderString = "N/A";
-			this.genderInt = 0;
+			return 0;
 		}
 	}
 	private	void setBirthDate() {

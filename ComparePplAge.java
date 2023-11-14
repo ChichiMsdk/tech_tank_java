@@ -19,6 +19,13 @@ public class ComparePplAge{
 		ComparePplAge.daysOlder = Human.compareDays(pplCompare[0], pplCompare[1]);
 	}
 
+	public static String[] getOlder(String[] dArgs){
+		String[] older = new String[2];
+		ComparePplAge.setPplCompare(dArgs);
+		older = ComparePplAge.getPplNames();
+		return older;
+	}
+
 	public People[] getPplCompare() {
 		return pplCompare;
 	}

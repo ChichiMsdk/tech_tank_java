@@ -14,6 +14,7 @@ public class Human {
 		peopleMap.put(people.getName(), people);
 		peopleMap.put(people.getLastName(), people);
 	}
+
 	public static People getPeople(String fullName){
 		People people = peopleMap.get(fullName);
 		if (people == null){
