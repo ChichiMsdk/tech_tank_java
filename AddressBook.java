@@ -15,72 +15,57 @@ public class AddressBook {
 					"(<name2> names are optional)");
 			return;
 		}
-
-		List<People> people = new ArrayList<>();
-		try { 
-			List<String> lines = Files.readAllLines(Paths.get(args[0]));
-			int j=0;
-			for (String line : lines) {
-				String[] parts = line.split(",");
-				people.add(new People(parts[0], parts[1], parts[2], people));
-				Human.addPeople(people.get(j));
-				j++;
-			}
-		}
-		catch (IOException e) {
-			System.out.println("Error reading file: " + e.getMessage());
-			return;
-		}
 		String[] dArgs = {"Bill", "Paul"};
-		if (args.length == 3){
-			dArgs[0] = args[1];
-			dArgs[1] = args[2];
-		}
-		else
-			System.out.println("--Not enough arguments, using default names--");
+		List<People> people = createPeopleList(args, dArgs);
 		int maleCount = people.get(0).getMales();
 		People oldest = people.get(0);
 		oldest = oldGuy(oldest, people);
 		int femaleCount = people.size() - maleCount;
-		Period period = Period.between(Human.getPeople(dArgs[0]).getDate(), 
-				Human.getPeople(dArgs[1]).getDate());
-		int oldCheck = 1;
-		if (Human.getPeople(dArgs[0]).getDate().isBefore(
-					Human.getPeople(dArgs[1]).getDate()))
-			oldCheck = 2;
-		int daysOlder = period.getDays();
-		int monthsOlder = period.getMonths();
-		int yearsOlder = period.getYears();
 		long daysBetween = ChronoUnit.DAYS.between(
-				Human.getPeople(dArgs[0]).getDate(), 
-				Human.getPeople(dArgs[1]).getDate());
+				Human.getPeople(dArgs[0]).getBirthDate(), 
+				Human.getPeople(dArgs[1]).getBirthDate());
 		printAnswers(femaleCount, maleCount, oldest, daysBetween, dArgs);
     }
 
 	public static void printAnswers(int femaleCount, int maleCount, 
 			People oldest, long daysOlder, String[] dArgs){
 		System.out.println("The oldest person is " + oldest.getFullName());
+		if (maleCount > 1)
+			System.out.println("There are " + maleCount + " males.");
+		else
+			System.out.println("There is " + maleCount + " male.");
+
+/*adding females not asked
 		System.out.println("There are " + maleCount + " male(s) and "
-				+ femaleCount + " female(s)");
+				+ femaleCount + " female(s)"); */
+		String day = "days";
 		if (daysOlder > 0)
 		{
-			System.out.println( dArgs[0] + " is " + daysOlder + 
-					" day(s) older than " + dArgs[1] );
+			day = "day";
+			System.out.println( dArgs[0] + " is " + daysOlder + " "
+					+ day + " older than " + dArgs[1] );
 		}
 		else if ( daysOlder == 0){
 			System.out.println(dArgs[0]+" and "+dArgs[1]+" are the same age");
 		}
 		else{
+			if (daysOlder == -1)
+				day = "day";
 			daysOlder = daysOlder * -1;
-			System.out.println( dArgs[1] + " is " + daysOlder + 
-					" day(s) older than " + dArgs[0] );
+			System.out.println( dArgs[1] + " is " + daysOlder + " "
+					+ day + " older than " + dArgs[0] );
 		}
 
 	}
+	public static List<People> createPeopleList(String[] args, String[] dArgs){
+			FileParser.ParsePeople(args, dArgs);
+			List<People> people = FileParser.getPeopleList();
+			FileParser.AddPeople(people);
+			return people;
+	}
 	public static LocalDate parseDate(LocalDate date){
-		if (date == null)
-			return null;
 		//birth date cant be after 2023 anyway.
+		//years under 1900 are not taken into account
 		if (date.getYear() > 2023)
 			date = date.minusYears(100);
 		return date;
@@ -88,8 +73,8 @@ public class AddressBook {
 	public static People oldGuy(People oldest, List<People> people){
 		for (int i = 0; i < people.size(); i++) {
 			if (i > 0){
-				if (oldest.getDate().isAfter(people.get(i)
-							.getDate())){
+				if (oldest.getBirthDate().isAfter(people.get(i)
+							.getBirthDate())){
 					oldest = people.get(i);
 				}
 			}
