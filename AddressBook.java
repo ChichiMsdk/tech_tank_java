@@ -28,12 +28,7 @@ public class AddressBook {
 	public static String[] nameSplit(String str){
 		String trim = str.replaceFirst("^\\s+", "");
 		String[] parts = new String[2];
-		try{
-			parts = trim.split(" ");
-		} catch (NullPointerException e){
-			System.out.println("Please provide a name");
-			System.exit(1);
-		}
+		parts = trim.split(" ");
 		try{
 			if (parts[1] == null || parts[0].isEmpty()){
 				System.out.println("TRY Warning: (last) name is missing.");
@@ -41,6 +36,11 @@ public class AddressBook {
 				return part;
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
+			if (parts[0].isEmpty()){
+				System.out.println("Warning: empty name found.. still added.");
+				String[] part = {"N/A", "N/A"};
+				return part;
+			}
 			System.out.println("CATCH Warning: (last) name is missing.");
 			String[] part = {parts[0], "N/A"};
 			return part;

@@ -26,12 +26,16 @@ public class People {
 		this.genderInt = changeGenderToInt();
 	}
 	public int changeGenderToInt() {
-		if (genderString.compareTo("Male") == 0) {
+		if (genderString.compareTo("Male") == 0
+				|| genderString.compareTo("male") == 0) {
 			return 1;
 		}
-		if (genderString.compareTo("Female") == 0) {
+		if (genderString.compareTo("Female") == 0
+				|| genderString.compareTo("female") == 0) {
 			return 2;
 		} else {
+			System.out.println("Warning: could not retrieve gender of "
+					+ fullName + ". Please check the file next time.");
 			return 0;
 		}
 	}
