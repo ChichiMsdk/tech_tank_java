@@ -25,7 +25,7 @@ public class ErrorHelper{
 	public static void flagWarning(){
 		ErrorHelper.warningCount += 1;
 		if (warningCount >= 10){
-			System.err.println(ErrorHelper.WARNING_COUNT);
+			System.err.println(ErrorHelper.WRNG_COUNT);
 		}
 	}
 	/**
@@ -47,9 +47,9 @@ public class ErrorHelper{
 	 * The {@code getWarningCount} is used to check how many warnings
 	 * have been flagged at the end of the program.
 	 */
-	public static int getWarningCount(){
+	public static void getWarningCount(){
 		if (warningCount >= 1){
-			System.err.println(ErrorHelper.WARNING_COUNT);
+			System.err.println(ErrorHelper.WRNG_COUNT);
 		}
 	}
 }

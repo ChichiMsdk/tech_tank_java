@@ -3,11 +3,6 @@ import java.util.List;
  * The {@code Answers} class is used to print the answers to the questions
  * asked in the assignment but also recover the required values.
  * <p> This class contains the following useful methods:
- * <ul><pre>{@code printAll}</pre></ul>
- * <ul><pre>{@code printOldest}</pre></ul>
- * <ul><pre>{@code printMalesNbr}</pre></ul>
- * <ul><pre>{@code getOldestInList}</pre></ul>
- * <ul><pre>{@code getMalesNbr}</pre></ul>
  * </p>
  */
 public class Answers{
@@ -60,8 +55,9 @@ public class Answers{
 	/**
 	 * @param humanMap the map containing the people
 	 * @param dArgs the names of the people to compare
-	 * @return the number of days older between the two people,<br>
+	 * @return the number of days older between the two people
 	 */
+
 	public static long getDaysOlder(String[] dArgs, HumanMap humanMap){
 		People[] people = ComparePpl.getPplCompFromStr(humanMap, dArgs);
 		if (people.length != 2){
@@ -72,10 +68,7 @@ public class Answers{
 		return daysOlder;
 
 	}
-	/**
-	 * Prints the number of males in the list.
-	 * 
-	 */
+
 	public static void printMalesNbr(int maleCount){
 		if (maleCount > 1) {
 			System.out.println("There are " + maleCount + " males.");
@@ -93,6 +86,7 @@ public class Answers{
 	 * @param daysOlder the number of days between the two people
 	 * @param dArgs the names of the people to compare
 	 */
+
 	public static void printOldestComp(long daysOlder, String[] dArgs) {
 		String day = "days";
 		if (daysOlder > 0) {

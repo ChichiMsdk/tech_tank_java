@@ -39,7 +39,8 @@ public class ParserHelper{
 			dArgs[0] = args[1];
 			dArgs[1] = args[2];
 		} else {
-			System.out.println("-Not enough <names>, using default ones-");
+			System.out.println("Not enough <names>, using default ones "
+					+ "'" + dArgs[0] + " and " + dArgs[1] + "'");
 			System.out.println("");
 			System.out.println("");
 		}
@@ -50,24 +51,25 @@ public class ParserHelper{
 		parts = str.split(" ");
 		try{
 			if (parts[1] == null || parts[0].isEmpty()){
-				System.err.println("Warning: (last) name is missing.");
+				System.err.println("Warning: (last) name is missing. " + str);
 				String[] part = {parts[1], "N/A"};
 				return part;
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			if (parts[0].isEmpty()){
-				System.err.println("Warning: empty name found.. still added.");
+				System.err.println("Warning: empty name found.. still added. "
+						+ str);
 				String[] part = {"N/A", "N/A"};
 				return part;
 			}
-			System.err.println("Warning: (last) name is missing.");
+			System.err.println("Warning: (last) name is missing. " + str);
 			String[] part = {parts[0], "N/A"};
 			return part;
 		}
 		try{
 			if (parts[2] != null){
 			System.err.println("Warning: (last) name has more than" 
-					+" one space allowed. Please check the file next time.");
+					+" one space allowed. " + str);
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return parts;
@@ -81,7 +83,6 @@ public class ParserHelper{
 			System.err.println("Error parsing line: " + lines);
 			System.err.println(parts.length + " commas found, expected 3");
 			System.out.println("Skipping line...");
-			//maybe stop the program here ? I don't know.
 			return null;
 		}
 		for ( int i = 0; i < parts.length; i++) {

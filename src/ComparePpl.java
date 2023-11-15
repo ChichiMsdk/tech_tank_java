@@ -37,10 +37,15 @@ public class ComparePpl{
 		ComparePpl.pplNames[0] = pplCompare[0].getLastName();
 		ComparePpl.pplNames[1] = pplCompare[1].getLastName();
 	}
-// better if there is "N/A" in the output
+	// better if there is "N/A" in the output
 	public static String[] getCompFullNames(String[] dArgs, HumanMap humanMap){
 		ComparePpl.setCompare(dArgs, humanMap);
-		setFullNames();
+		if (pplCompare[0] == null || pplCompare[1] == null) {
+			System.err.println("Error: with names to compare.");
+			System.err.println("Using default names..");
+		} else { 
+			setFullNames();
+		}
 		return pplNames;
 	}
 

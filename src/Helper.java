@@ -29,7 +29,7 @@ public class Helper{
 			return 2;
 		} else {
 			System.out.println("Warning: could not retrieve gender of "
-					+ fullName + ". Please check the file next time.");
+					+ fullName + ".");
 			return 0;
 		}
 	}

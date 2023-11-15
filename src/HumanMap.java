@@ -48,7 +48,6 @@ public class HumanMap {
 	public People getPeopleByNames(String name, HumanMap humanMap){
 		People people = humanMap.peopleMap.get(name);
 		if (people == null){
-			System.err.println("Not found, please provide (a) valid name(s)");
 			return null;
 		}
 		return people;
