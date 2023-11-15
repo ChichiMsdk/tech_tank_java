@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -14,12 +16,12 @@ import java.time.Period;
 
 public class HelperDate{
 
-	public static long compareDays(People people1, People people2){
+	public static long compareDays(@NotNull People people1, @NotNull People people2){
         return ChronoUnit.DAYS.between(
 				people1.getBirthDate(), people2.getBirthDate());
 	}
 
-	public static LocalDate formatDate(String birthString) {
+	public static @NotNull LocalDate formatDate(String birthString) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
 		LocalDate date;
 		try {

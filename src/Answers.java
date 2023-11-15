@@ -1,3 +1,6 @@
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +23,10 @@ public class Answers{
 		System.out.println("\n\n");
 	}
 
-	public static People getOldestInList(List<People> peopleList) {
+	public static @Nullable People getOldestInList(@NotNull List<People> peopleList) {
+		if (peopleList.isEmpty()){
+			return null;
+		}
 			People oldest = peopleList.get(0);
         for (int i = 0; i < peopleList.size(); i++) {
 				if (i > 0) {
@@ -33,7 +39,7 @@ public class Answers{
 			return oldest;
 		}
 	
-	public static int getMalesNbr(List<People> peopleList) {
+	public static int getMalesNbr(@NotNull List<People> peopleList) {
 		int maleCount = 0;
         for (People people : peopleList) {
             if (people.getGenderInt() == 1) {
@@ -61,7 +67,7 @@ public class Answers{
 		}
 	}
 	
-	public static void printOldestInList(People oldest){
+	public static void printOldestInList(@NotNull People oldest){
 		System.out.println("The oldest person is " + oldest.getFullName());
 	}
 

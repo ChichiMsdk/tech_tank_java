@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class Helper{
@@ -6,8 +8,8 @@ public class Helper{
 	 * Returns a list of {@code People} objects.
 	 * {@code People} objects are created from file in and added to the list.
 	 */
-	public static List<People> initListAndParsing(String[] args,
-			String[] dArgs, HumanMap humanMap) {
+	public static List<People> initListAndParsing(String @NotNull [] args,
+												  String @NotNull [] dArgs, @NotNull HumanMap humanMap) {
 		ParserHelper.FileToLinesList(args, dArgs);
 		humanMap.initPeopleFromLines(ParserHelper.getLinesList());
 		List<People> peopleList = humanMap.getPeopleList();
@@ -15,7 +17,7 @@ public class Helper{
 		return peopleList;
 	}
 
-	public static int changeGenderToInt(String genderString, String fullName) {
+	public static int changeGenderToInt(@NotNull String genderString, String fullName) {
 		if (genderString.compareTo("Male") == 0
 				|| genderString.compareTo("male") == 0) {
 			return 1;
@@ -34,7 +36,6 @@ public class Helper{
 		System.out.println("Usage:<filename> <name1>"+ "<name2> <t>"
 				+ "(names are optional)");
 		System.out.println("t = warnings (no warnings by default)");
-
 	}
 
 	public static void checkDargs(){
@@ -44,10 +45,10 @@ public class Helper{
 		}
 	}
 
-	public static void checkArgs(String[] args){
+	public static void checkArgs(String @NotNull [] args){
 		if (args.length < 1 || args.length > 4) {
 			printArgsIncorrect();
-			return;
+			System.exit(1);
 		}
 		if (args.length == 4){
 			if (args[3].compareTo("t") == 0){

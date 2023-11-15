@@ -1,3 +1,6 @@
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 /**
  * ComparePpl class is used to compare two people and return their names
  * in a String array.<br>
@@ -15,7 +18,7 @@ public class ComparePpl{
 	 * Allows to set the {@code People} pplCompare objects to compare using<br>
 	 * their names.
 	 */
-	private static void setCompare(String[] names, HumanMap humanMap) {
+	private static void setCompare(String @NotNull [] names, @NotNull HumanMap humanMap) {
 		ComparePpl.pplCompare[0] = humanMap.getPeopleByNames(names[0],
 				humanMap);
 		ComparePpl.pplCompare[1] = humanMap.getPeopleByNames(names[1],
@@ -53,8 +56,8 @@ public class ComparePpl{
 	 * using the names<br>passed as arguments.
 	 */
 
-	public static People[] getPplCompFromStr(HumanMap humanMap, 
-			String[] names) {
+	public static People @Nullable [] getPplCompFromStr(HumanMap humanMap,
+														String @NotNull [] names) {
 		if (names.length == 2){
 			setCompare(names, humanMap);
 		} else {

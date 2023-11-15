@@ -1,3 +1,6 @@
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
@@ -19,7 +22,7 @@ public class ParserHelper{
 	 * @param args the arguments passed to the program
 	 * @param dArgs the names of the people to compare
 	 */
-	public static void FileToLinesList(String[] args, String[] dArgs){
+	public static void FileToLinesList(String @NotNull [] args, String @NotNull [] dArgs){
 		try { 
 			List<String> lines = Files.readAllLines(Paths.get(args[0]));
 			setLineList(lines);
@@ -43,7 +46,7 @@ public class ParserHelper{
 		}
 	}
 
-	public static String[] splitName(String str){
+	public static String @Nullable [] splitName(@NotNull String str){
 		String[] parts = str.split(" ");
 		if (parts[0].isEmpty()){
 			ErrorHelper.flagWrng("Warning: empty name found" 
@@ -54,14 +57,17 @@ public class ParserHelper{
 			ErrorHelper.flagWrng("Warning: (last) name has more than" 
 					+" one space allowed.\nTaking first and last\n"
 					+ str, ErrorHelper.getVerbose());
-			parts[1] = parts[parts.length - 1];
+			String[] change = new String[2];
+			change[0] = parts[0];
+			change[1] = parts[parts.length - 1];
+			return change;
 		}
 		if (parts.length < 2)
 			return null;
 		return parts;
 	}
 
-	public static String[] splitFields(String lines){
+	public static String @Nullable [] splitFields(@NotNull String lines){
 		String[] parts = lines.split(",");
 		if (parts.length != 3) {
 			ErrorHelper.flagWrng("Warning: skipping line: " + lines, 

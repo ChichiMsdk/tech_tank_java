@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -19,7 +21,7 @@ public class HumanMap {
 		this.peopleList = new ArrayList<>();
 	}
 
-	public void initPeopleFromLines(List<String> lines){
+	public void initPeopleFromLines(@NotNull List<String> lines){
 		for (String line : lines) {
 			String[] parts = ParserHelper.splitFields(line);
 			if (parts != null){
@@ -32,7 +34,7 @@ public class HumanMap {
 		}
 	}
 
-	public void addPeopleToMap(List<People> peopleList){
+	public void addPeopleToMap(@NotNull List<People> peopleList){
 		if (!peopleList.isEmpty()){
 			for (People p : peopleList){
 				this.peopleMap.put(p.getFullName(), p);
@@ -49,7 +51,7 @@ public class HumanMap {
 		return this.peopleList;
 	}
 
-	public People getPeopleByNames(String name, HumanMap humanMap){
+	public People getPeopleByNames(String name, @NotNull HumanMap humanMap){
         return humanMap.peopleMap.get(name);
 	}
 
