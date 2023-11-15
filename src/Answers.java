@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 
 public class Answers{
 		
@@ -14,17 +15,14 @@ public class Answers{
 			String[] dArgs) {
 		System.out.println("\n\n");
 		printMalesNbr(getMalesNbr(peopleList));
-		printOldestInList(getOldestInList(peopleList));
+		printOldestInList(Objects.requireNonNull(getOldestInList(peopleList)));
 		printOldestComp(getDaysOlder(dArgs, humanMap), dArgs);
 		System.out.println("\n\n");
 	}
 
 	public static People getOldestInList(List<People> peopleList) {
 			People oldest = peopleList.get(0);
-			if (peopleList.size() <= 0) {
-				return null;
-			}
-			for (int i = 0; i < peopleList.size(); i++) {
+        for (int i = 0; i < peopleList.size(); i++) {
 				if (i > 0) {
 					if (oldest.getBirthDate().isAfter(peopleList.get(i)
 								.getBirthDate())) {
@@ -37,11 +35,11 @@ public class Answers{
 	
 	public static int getMalesNbr(List<People> peopleList) {
 		int maleCount = 0;
-		for ( int i = 0; i < peopleList.size(); i++) {
-			if (peopleList.get(i).getGenderInt() == 1) {
-				maleCount++;
-			}
-		}
+        for (People people : peopleList) {
+            if (people.getGenderInt() == 1) {
+                maleCount++;
+            }
+        }
 		return maleCount;
 	}
 
@@ -51,8 +49,7 @@ public class Answers{
 			ErrorHelper.flagError();
 			return 0;
 		}
-		long daysOlder = HelperDate.compareDays(people[0], people[1]);
-		return daysOlder;
+        return HelperDate.compareDays(people[0], people[1]);
 
 	}
 

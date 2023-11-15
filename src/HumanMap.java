@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class HumanMap {
 
-	private Map<String, People> peopleMap;
-	private List<People> peopleList;
+	private final Map<String, People> peopleMap;
+	private final List<People> peopleList;
 	
 	public HumanMap(){
 		this.peopleMap = new HashMap<>();
@@ -24,7 +24,7 @@ public class HumanMap {
 			String[] parts = ParserHelper.splitFields(line);
 			if (parts != null){
 				String[] nameParts = ParserHelper.splitName(parts[0]);
-				if (parts != null && nameParts != null){
+				if (nameParts != null){
 					this.peopleList.add(new People( parts[1], parts[2], 
 								nameParts[0], nameParts[1]));
 				}
@@ -50,11 +50,7 @@ public class HumanMap {
 	}
 
 	public People getPeopleByNames(String name, HumanMap humanMap){
-		People people = humanMap.peopleMap.get(name);
-		if (people == null){
-			return null;
-		}
-		return people;
+        return humanMap.peopleMap.get(name);
 	}
 
 	public int getAge(String name, HumanMap humanMap){

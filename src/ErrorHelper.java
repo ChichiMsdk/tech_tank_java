@@ -8,7 +8,7 @@ public class ErrorHelper{
 	private static int errorCheck = 0;
 	private static int warningCount = 0;
 	private static boolean verbose = false;
-	public static final String ERROR_MSG = "Error occured.";
+	public static final String ERROR_MSG = "Error occurred.";
 	public static final String WRNG_COUNT = " warning(s).";
 
 	/**
@@ -33,7 +33,7 @@ public class ErrorHelper{
 
 	/**
 	 * {@code resetError} is used after taking care of the error or 
-	 * atleast being aware of it.
+	 *at least being aware of it.
 	 */
 	public static void resetError(){
 		ErrorHelper.errorCheck = 0;
@@ -45,7 +45,7 @@ public class ErrorHelper{
 	 */
 	public static void toggleVerbose(){
 		ErrorHelper.verbose = true;
-		System.err.println("Verbose is now " + ErrorHelper.verbose);
+		System.err.println("Verbose is now " + true);
 	}
 
 	public static int getErrorCheck(){

@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  * {@code AddressBook} is the main class of the program.
@@ -11,6 +10,7 @@ import java.util.ArrayList;
  */
 public class AddressBook {
 
+	public static String[] dArgs = { "Bill", "Paul" };
 	/**
 	 * The {@code main} method is used to run the program.
 	 * It checks the number of arguments passed<br> to the program
@@ -18,34 +18,27 @@ public class AddressBook {
 	 *String[] dArgs</p></pre>
 	 */
 
-    public static void main(String[] args) {
-		if (args.length < 1 || args.length > 4) {
-			System.out.println("Usage:<filename> <name1>"+ 
-					"<name2> <t> (names are optional)");
-			System.out.println("t = warnings (no warnings by default)");
-			return;
-		}
-		if (args.length == 4){
-			if (args[3].compareTo("t") == 0){
-				ErrorHelper.toggleVerbose();
-			}
-		}
-		String[] dArgs = { "Bill", "Paul" };
+	public static void main(String[] args) {
+		runIt(args);
+	}
+
+	public static void runIt(String[] args){
+
+		Helper.checkArgs(args);
 		HumanMap humanMap = new HumanMap();
-		List<People> peopleList = Helper.initListAndParsing(args, dArgs,
-				humanMap);
+		List<People> peopleList = Helper.initListAndParsing(args,
+				AddressBook.dArgs, humanMap);
 		if (peopleList.isEmpty()){
 			System.out.println("Error: peopleList is empty..");
 			System.out.println("'Helper.initListAndParsing' might've failed.");
 			ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 			System.exit(1);
 		}
-		dArgs = ComparePpl.getCompFullNames(dArgs, humanMap);
-		if ( dArgs[0] == null || dArgs[1] == null){
-			dArgs[0] = "Bill";
-			dArgs[1] = "Paul";
-		}
+		AddressBook.dArgs = ComparePpl.getCompFullNames(AddressBook.dArgs, 
+				humanMap);
+		Helper.checkDargs();
 		Answers.printAll(peopleList, humanMap, dArgs);
 		ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
-    }
+	}
+
 }

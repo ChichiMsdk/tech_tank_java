@@ -1,6 +1,6 @@
 Bill McKnight, Male, 06/03/77
 Amina Yusuf, Female, 01/12/77
-James McKinsey,, Male, 06/03/77
+James McKinsey, Male, 06/03/77
 Paul Robinson, Male, 16/01/85
 Soumaya Al-Sifouli, Female, 24/12/49
 Gemma Lane, Female, 20/11/91
@@ -17,3 +17,33 @@ Sofia Rodriguez, Female, 11/06/85
 Chen Wei, Male, 03/08/88
 Fatima Al-Farsi, Female, 29/01/90
 Eugene Lucas, Male, 30/01/90
+Nina Kulkarni, Female, 05/04/84
+Andre Gomez, Male, 10/06/76
+Leila Khaled, Female, 12/07/82
+Tommy Lee, Male, 22/10/77
+Irina Sokolov, Female, 03/03/75
+Miguel Ángel Torres, Male, 17/11/80
+Asha Patel, Female, 24/04/88
+Kwame Nkrumah, Male, 15/02/83
+Yuki Tanaka, Female, 09/05/79
+David Smith, Male, 01/01/81
+Hanna Schmidt, Female, 07/08/87
+Omar Al Bashir, Male, 18/03/74
+Elif Demir, Female, 21/09/85
+Luca Rossi, Male, 29/12/88
+Anna Ivanova, Female, 14/04/76
+Samuel Adams, Male, 11/07/79
+Lily Nguyen, Female, 22/05/90
+Mohammed Al Zahid, Male, 04/08/92
+Zoe Williams, Female, 13/10/83
+Khaled Al Hashimi, Male, 08/09/86
+Olivia Johnson, Female, 02/02/78
+Kenji Sato, Male, 19/12/89
+Maria Garcia, Female, 28/03/77
+Ibrahim Al-Khalil, Male, 06/10/81
+Sophie Martin, Female, 17/07/92
+Alexander Petrov, Male, 30/03/75
+Nadia Hussain, Female, 21/11/79
+Dmitry Ivanov, Male, 08/08/90
+Emma Brown, Female, 16/04/86
+Ali Mohammed, Male, 13/07/87

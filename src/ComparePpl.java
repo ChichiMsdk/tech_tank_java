@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * ComparePpl class is used to compare two people and return their names
  * in a String array.<br>
@@ -10,8 +7,8 @@ import java.util.List;
  */
 public class ComparePpl{
 
-	private static People[] pplCompare = new People[2]; 
-	private static String[] pplNames = new String[2];
+	private static final People[] pplCompare = new People[2];
+	private static final String[] pplNames = new String[2];
 
 	/**
 	 * {@code setCompare}<br>
@@ -33,22 +30,10 @@ public class ComparePpl{
 		ComparePpl.pplNames[1] = pplCompare[1].getFullName();
 	}
 
-	private static void setNames() {
-		ComparePpl.pplNames[0] = pplCompare[0].getName();
-		ComparePpl.pplNames[1] = pplCompare[1].getName();
-	}
-
-	private static void setLastNames() {
-		ComparePpl.pplNames[0] = pplCompare[0].getLastName();
-		ComparePpl.pplNames[1] = pplCompare[1].getLastName();
-	}
-
 	/**
 	 * {@code getCompFullNames}<br>
 	 * Allows to change the names of the people to compare to display
 	 * the right names<br> in the output, especially if "N/A" had to be used.
-	 * @see getCompNames
-	 * @see getCompLastNames
 	 */
 
 	public static String[] getCompFullNames(String[] names, HumanMap humanMap){
@@ -59,18 +44,6 @@ public class ComparePpl{
 		} else { 
 			setFullNames();
 		}
-		return pplNames;
-	}
-
-	public static String[] getCompLastNames(String[] names, HumanMap humanMap){
-		ComparePpl.setCompare(names, humanMap);
-		setLastNames();
-		return pplNames;
-	}
-
-	public static String[] getCompNames(String[] names, HumanMap humanMap){
-		ComparePpl.setCompare(names, humanMap);
-		setNames();
 		return pplNames;
 	}
 

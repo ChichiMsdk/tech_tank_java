@@ -12,8 +12,6 @@ import java.util.ArrayList;
  */
 
 public class ParserHelper{
-
-	private static List<People> peopleList = new ArrayList<>();
 	private static List<String> lines = new ArrayList<>();
 
 	/**
@@ -46,8 +44,7 @@ public class ParserHelper{
 	}
 
 	public static String[] splitName(String str){
-		String[] parts = new String[2];
-		parts = str.split(" ");
+		String[] parts = str.split(" ");
 		if (parts[0].isEmpty()){
 			ErrorHelper.flagWrng("Warning: empty name found" 
 					+ str, ErrorHelper.getVerbose());
@@ -57,7 +54,6 @@ public class ParserHelper{
 			ErrorHelper.flagWrng("Warning: (last) name has more than" 
 					+" one space allowed.\nTaking first and last\n"
 					+ str, ErrorHelper.getVerbose());
-			parts[0] = parts[0];
 			parts[1] = parts[parts.length - 1];
 		}
 		if (parts.length < 2)
@@ -80,10 +76,6 @@ public class ParserHelper{
 
 	private static void setLineList(List<String> lines){
 		ParserHelper.lines = lines;
-	}
-
-	public static List<People> getPeopleList(){
-		return peopleList;
 	}
 
 	public static List<String> getLinesList(){

@@ -3,8 +3,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.format.DateTimeFormatter;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
-
 /**
  * {@code HelperDate} is a helper class for {@code ComparePpl} class.
  * <p> This class contains the following useful information:
@@ -17,14 +15,13 @@ import java.time.temporal.ChronoUnit;
 public class HelperDate{
 
 	public static long compareDays(People people1, People people2){
-		long daysOlder = ChronoUnit.DAYS.between(
+        return ChronoUnit.DAYS.between(
 				people1.getBirthDate(), people2.getBirthDate());
-		return daysOlder;
 	}
 
 	public static LocalDate formatDate(String birthString) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yy");
-		LocalDate date = null;
+		LocalDate date;
 		try {
 			date = LocalDate.parse(birthString, format);
 		} catch (DateTimeParseException e) {

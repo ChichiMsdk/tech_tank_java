@@ -29,4 +29,30 @@ public class Helper{
 			return 0;
 		}
 	}
+
+	public static void printArgsIncorrect(){
+		System.out.println("Usage:<filename> <name1>"+ "<name2> <t>"
+				+ "(names are optional)");
+		System.out.println("t = warnings (no warnings by default)");
+
+	}
+
+	public static void checkDargs(){
+		if ( AddressBook.dArgs[0] == null || AddressBook.dArgs[1] == null){
+			AddressBook.dArgs[0] = "Bill";
+			AddressBook.dArgs[1] = "Paul";
+		}
+	}
+
+	public static void checkArgs(String[] args){
+		if (args.length < 1 || args.length > 4) {
+			printArgsIncorrect();
+			return;
+		}
+		if (args.length == 4){
+			if (args[3].compareTo("t") == 0){
+				ErrorHelper.toggleVerbose();
+			}
+		}
+	}
 }
