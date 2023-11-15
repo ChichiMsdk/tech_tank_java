@@ -55,7 +55,7 @@ public class ParserHelper{
 		}
 		if (parts.length > 2){
 			ErrorHelper.flagWrng("Warning: (last) name has more than" 
-					+" one space allowed. Taking first and last\n"
+					+" one space allowed.\nTaking first and last\n"
 					+ str, ErrorHelper.getVerbose());
 			parts[0] = parts[0];
 			parts[1] = parts[parts.length - 1];
