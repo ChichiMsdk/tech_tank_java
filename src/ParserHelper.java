@@ -31,12 +31,12 @@ public class ParserHelper{
 				ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 				System.exit(1);
 			}
-		} catch (IOException e) {
+		} catch (IOException | ArrayIndexOutOfBoundsException e) {
 			System.err.println("Error reading file: " + e.getMessage());
 			ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 			System.exit(1);
 		}
-		if (args.length == 4 || args.length == 3){
+        if (args.length == 4 || args.length == 3){
 			dArgs[0] = args[1];
 			dArgs[1] = args[2];
 		} else {
