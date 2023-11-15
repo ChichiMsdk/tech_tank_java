@@ -2,7 +2,7 @@ import java.time.LocalDate;
 public class People {
 
 	//maybe make an array for the names ?
-	private String fullName;
+	private final String fullName;
 	private final String name;
 	private final String lastName;
 	private String genderString;
