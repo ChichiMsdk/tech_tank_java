@@ -54,8 +54,8 @@ public class ComparePpl{
 	public static String[] getCompFullNames(String[] names, HumanMap humanMap){
 		ComparePpl.setCompare(names, humanMap);
 		if (pplCompare[0] == null || pplCompare[1] == null) {
-			System.err.println("Error: with names to compare.");
-			System.err.println("Using default names..");
+			ErrorHelper.flagWrng("Error names to compare\n Using defaults ",
+					ErrorHelper.getVerbose());
 		} else { 
 			setFullNames();
 		}
@@ -85,10 +85,12 @@ public class ComparePpl{
 		if (names.length == 2){
 			setCompare(names, humanMap);
 		} else {
-			System.err.println("Error: not enough names to compare.");
+			ErrorHelper.flagWrng("Error: not enough names to compare.",
+					ErrorHelper.getVerbose());
 		}
 		if (pplCompare[0] == null || pplCompare[1] == null) {
-			System.err.println("Error: not enough names to compare.");
+			ErrorHelper.flagWrng("Error: not enough names to compare.",
+					ErrorHelper.getVerbose());
 		}
 		return pplCompare;
 	}

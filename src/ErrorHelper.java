@@ -7,8 +7,10 @@ public class ErrorHelper{
 	
 	private static int errorCheck = 0;
 	private static int warningCount = 0;
+	private static boolean verbose = false;
 	public static final String ERROR_MSG = "Error occured.";
 	public static final String WRNG_COUNT = " warning(s).";
+
 	/**
 	 * {@code flagError} is useful when to check when out of scope.
 	 */
@@ -16,17 +18,19 @@ public class ErrorHelper{
 		ErrorHelper.errorCheck += 1;
 		System.err.println(ErrorHelper.ERROR_MSG + " Flagged.");
 	}
+
 	/**
-	 * {@code flagWarning}<br>
+	 * {@code flagWrng}<br>
 	 * A warning is not as serious as an error, but it is still important to 
 	 * have an idea on how many happened without having to print them all.
 	 */
-	public static void flagWarning(){
+	public static void flagWrng(String msg, boolean verbose){
 		ErrorHelper.warningCount += 1;
-		if (warningCount >= 10){
-			System.err.println(ErrorHelper.WRNG_COUNT);
+		if (verbose){
+			System.err.println("Warning: "+ msg);
 		}
 	}
+
 	/**
 	 * {@code resetError} is used after taking care of the error or 
 	 * atleast being aware of it.
@@ -34,19 +38,28 @@ public class ErrorHelper{
 	public static void resetError(){
 		ErrorHelper.errorCheck = 0;
 	}
+
 	/**
-	 * {@code getErrorCheck} check if there is still an error.
-	 * @return the errorCheck
+	 * {@code setVerbose} 
+	 * Toggles the warning to be printed or not.
 	 */
+	public static void toggleVerbose(){
+		ErrorHelper.verbose = true;
+		System.err.println("Verbose is now " + ErrorHelper.verbose);
+	}
+
 	public static int getErrorCheck(){
 		return ErrorHelper.errorCheck;
 	}
-	/**
-	 * {@code getWarningCount} prints the number of warnings at the end.
-	 */
-	public static void getWarningCount(){
+
+	public static void getWarningCountEnd(){
 		if (warningCount >= 1){
 			System.err.println(ErrorHelper.WRNG_COUNT);
 		}
 	}
+
+	public static boolean getVerbose(){
+		return ErrorHelper.verbose;
+	}
+
 }

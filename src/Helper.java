@@ -24,8 +24,8 @@ public class Helper{
 				|| genderString.compareTo("female") == 0) {
 			return 2;
 		} else {
-			System.out.println("Warning: could not retrieve gender of "
-					+ fullName + ".");
+			ErrorHelper.flagWrng("Warning: could not retrieve gender of "
+					+ fullName + ".", ErrorHelper.getVerbose());
 			return 0;
 		}
 	}

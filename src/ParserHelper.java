@@ -33,14 +33,13 @@ public class ParserHelper{
 			System.err.println("Error reading file: " + e.getMessage());
 			System.exit(1);
 		}
-		if (args.length == 3){
+		if (args.length == 4 || args.length == 3){
 			dArgs[0] = args[1];
 			dArgs[1] = args[2];
 		} else {
-			System.out.println("Not enough <names>, using default ones "
-					+ "'" + dArgs[0] + " and " + dArgs[1] + "'");
-			System.out.println("");
-			System.out.println("");
+			ErrorHelper.flagWrng("Not enough <names>, using default ones "
+					+ "'" + dArgs[0] + " and " + dArgs[1] + "'", 
+					ErrorHelper.getVerbose());
 		}
 	}
 
@@ -49,25 +48,27 @@ public class ParserHelper{
 		parts = str.split(" ");
 		try{
 			if (parts[1] == null || parts[0].isEmpty()){
-				System.err.println("Warning: (last) name is missing. " + str);
+				ErrorHelper.flagWrng("Warning: (last) name is missing. " 
+						+ str, ErrorHelper.getVerbose());
 				String[] part = {parts[1], "N/A"};
 				return part;
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			if (parts[0].isEmpty()){
-				System.err.println("Warning: empty name found.. still added. "
-						+ str);
+				ErrorHelper.flagWrng("Warning: empty name found.. still "
+						+ "added. " + str, ErrorHelper.getVerbose());
 				String[] part = {"N/A", "N/A"};
 				return part;
 			}
-			System.err.println("Warning: (last) name is missing. " + str);
+			ErrorHelper.flagWrng("Warning: (last) name is missing. " 
+					+ str, ErrorHelper.getVerbose());
 			String[] part = {parts[0], "N/A"};
 			return part;
 		}
 		try{
 			if (parts[2] != null){
-			System.err.println("Warning: (last) name has more than" 
-					+" one space allowed. " + str);
+			ErrorHelper.flagWrng("Warning: (last) name has more than" 
+					+" one space allowed. " + str, ErrorHelper.getVerbose());
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return parts;
@@ -78,9 +79,8 @@ public class ParserHelper{
 	public static String[] splitFields(String lines){
 		String[] parts = lines.split(",");
 		if (parts.length != 3) {
-			System.err.println("Error parsing line: " + lines);
-			System.err.println(parts.length + " commas found, expected 3");
-			System.out.println("Skipping line...");
+			ErrorHelper.flagWrng("Warning: skipping line: " + lines, 
+					ErrorHelper.getVerbose());
 			return null;
 		}
 		for ( int i = 0; i < parts.length; i++) {

@@ -19,10 +19,16 @@ public class AddressBook {
 	 */
 
     public static void main(String[] args) {
-		if (args.length < 1 || args.length > 3) {
-			System.out.println("Usage: java HelloWorld <filename> <name1>"+ 
-					"(<name2> names are optional)");
+		if (args.length < 1 || args.length > 4) {
+			System.out.println("Usage:<filename> <name1>"+ 
+					"<name2> <t> (names are optional)");
+			System.out.println("t = warnings (no warnings by default)");
 			return;
+		}
+		if (args.length == 4){
+			if (args[3].compareTo("t") == 0){
+				ErrorHelper.toggleVerbose();
+			}
 		}
 		String[] dArgs = { "Bill", "Paul" };
 		HumanMap humanMap = new HumanMap();

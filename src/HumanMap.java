@@ -37,7 +37,8 @@ public class HumanMap {
 				this.peopleMap.put(p.getLastName(), p);
 			}
 		} else {
-			System.err.println("Error: no people to add to map.");
+			ErrorHelper.flagWrng("Error: no people to add to map", 
+					ErrorHelper.getVerbose());
 		}
 	}
 

@@ -28,9 +28,11 @@ public class HelperDate{
 		try {
 			date = LocalDate.parse(birthString, format);
 		} catch (DateTimeParseException e) {
-			System.out.println("Error parsing date: " + e.getMessage());
-			System.out.println("format should be: dd/mm/yy");
-			System.exit(1);
+			String msg = "Error parsing date: " + e.getMessage() + "\n"
+				+ "format should be: dd/mm/yy\n" + "using default date: " +
+				"01/01/23";
+			ErrorHelper.flagWrng(msg, ErrorHelper.getVerbose());
+			date = LocalDate.parse("01/01/23", format);
 		}
 		if (date.getYear() > getCurrentYear()) {
 			date = date.minusYears(100);	//if birth < 1923, assume 1923
