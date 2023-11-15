@@ -1,8 +1,0 @@
-!! Cases to check => Same person, same name, empty file, one person only.. 
--! ^^ make tests for such
--- Add Readme ? I do not know !
-
-
-
-xx Ensuring scalability, and endurance with no magic numbers ? (date..)
-xx Check the parsing and just exit if not good (if male or female is written etc)
