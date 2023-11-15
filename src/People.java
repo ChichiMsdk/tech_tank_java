@@ -13,11 +13,11 @@ public class People {
 	private	LocalDate 	birthDate;
 	private int 		age;
 
-	public People (String fullName, String genderString, String birthString) {
-		String[] nameParts = ParserHelper.splitName(fullName);
-		this.name = nameParts[0];
-		this.lastName = nameParts[1];
-		this.fullName = nameParts[0] + " " + nameParts[1];
+	public People (String genderString, String birthString,
+			String lastName, String name) {
+		this.name = name;
+		this.lastName = lastName;
+		this.fullName = name + " " + lastName;
 		this.genderString = genderString;
 		this.birthString = birthString;
 		setBirthDate();

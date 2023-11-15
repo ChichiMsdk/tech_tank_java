@@ -46,32 +46,17 @@ public class ParserHelper{
 	public static String[] splitName(String str){
 		String[] parts = new String[2];
 		parts = str.split(" ");
-		try{
-			if (parts[1] == null || parts[0].isEmpty()){
-				ErrorHelper.flagWrng("Warning: (last) name is missing. " 
-						+ str, ErrorHelper.getVerbose());
-				String[] part = {parts[1], "N/A"};
-				return part;
-			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			if (parts[0].isEmpty()){
-				ErrorHelper.flagWrng("Warning: empty name found.. still "
-						+ "added. " + str, ErrorHelper.getVerbose());
-				String[] part = {"N/A", "N/A"};
-				return part;
-			}
-			ErrorHelper.flagWrng("Warning: (last) name is missing. " 
+		if (parts[0].isEmpty()){
+			ErrorHelper.flagWrng("Warning: empty name found" 
 					+ str, ErrorHelper.getVerbose());
-			String[] part = {parts[0], "N/A"};
-			return part;
+			return null;
 		}
-		try{
-			if (parts[2] != null){
+		if (parts.length > 2){
 			ErrorHelper.flagWrng("Warning: (last) name has more than" 
-					+" one space allowed. " + str, ErrorHelper.getVerbose());
-			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			return parts;
+					+" one space allowed. Taking first and last\n"
+					+ str, ErrorHelper.getVerbose());
+			parts[0] = parts[0];
+			parts[1]  =parts[parts.length - 1];
 		}
 		return parts;
 	}

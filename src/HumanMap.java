@@ -22,9 +22,10 @@ public class HumanMap {
 	public void initPeopleFromLines(List<String> lines){
 		for (String line : lines) {
 			String[] parts = ParserHelper.splitFields(line);
-			if (parts != null){
-				this.peopleList.add(new People(parts[0], parts[1],
-							parts[2]));
+			String[] nameParts = ParserHelper.splitName(parts[0]);
+			if (parts != null && nameParts != null){
+				this.peopleList.add(new People( parts[1], parts[2], 
+							nameParts[0], nameParts[1]));
 			}
 		}
 	}

@@ -54,7 +54,7 @@ public class ComparePpl{
 	public static String[] getCompFullNames(String[] names, HumanMap humanMap){
 		ComparePpl.setCompare(names, humanMap);
 		if (pplCompare[0] == null || pplCompare[1] == null) {
-			ErrorHelper.flagWrng("Error names to compare\n Using defaults ",
+			ErrorHelper.flagWrng("Error names to compare\nUsing defaults ",
 					ErrorHelper.getVerbose());
 		} else { 
 			setFullNames();
