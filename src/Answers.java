@@ -23,7 +23,8 @@ public class Answers{
 		System.out.println("\n\n");
 	}
 
-	public static @Nullable People getOldestInList(@NotNull List<People> peopleList) {
+	public static @Nullable People getOldestInList(
+				@NotNull List<People> peopleList) {
 		if (peopleList.isEmpty()){
 			return null;
 		}

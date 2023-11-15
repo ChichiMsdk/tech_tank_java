@@ -22,7 +22,8 @@ public class ParserHelper{
 	 * @param args the arguments passed to the program
 	 * @param dArgs the names of the people to compare
 	 */
-	public static void FileToLinesList(String @NotNull [] args, String @NotNull [] dArgs){
+	public static void FileToLinesList(String @NotNull [] args, 
+			String @NotNull [] dArgs){
 		try { 
 			List<String> lines = Files.readAllLines(Paths.get(args[0]));
 			setLineList(lines);

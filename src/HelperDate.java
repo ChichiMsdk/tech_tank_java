@@ -16,7 +16,8 @@ import java.time.Period;
 
 public class HelperDate{
 
-	public static long compareDays(@NotNull People people1, @NotNull People people2){
+	public static long compareDays(@NotNull People people1, 
+			@NotNull People people2){
         return ChronoUnit.DAYS.between(
 				people1.getBirthDate(), people2.getBirthDate());
 	}

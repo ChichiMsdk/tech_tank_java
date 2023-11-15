@@ -18,7 +18,8 @@ public class ComparePpl{
 	 * Allows to set the {@code People} pplCompare objects to compare using<br>
 	 * their names.
 	 */
-	private static void setCompare(String @NotNull [] names, @NotNull HumanMap humanMap) {
+	private static void setCompare(String @NotNull [] names,
+			@NotNull HumanMap humanMap) {
 		ComparePpl.pplCompare[0] = humanMap.getPeopleByNames(names[0],
 				humanMap);
 		ComparePpl.pplCompare[1] = humanMap.getPeopleByNames(names[1],
@@ -57,7 +58,7 @@ public class ComparePpl{
 	 */
 
 	public static People @Nullable [] getPplCompFromStr(HumanMap humanMap,
-														String @NotNull [] names) {
+			String @NotNull [] names) {
 		if (names.length == 2){
 			setCompare(names, humanMap);
 		} else {
