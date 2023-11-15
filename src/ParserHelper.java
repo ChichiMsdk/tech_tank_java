@@ -40,6 +40,8 @@ public class ParserHelper{
 			dArgs[1] = args[2];
 		} else {
 			System.out.println("-Not enough <names>, using default ones-");
+			System.out.println("");
+			System.out.println("");
 		}
 	}
 

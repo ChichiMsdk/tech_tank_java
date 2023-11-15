@@ -27,22 +27,25 @@ public class AddressBook {
 		}
 		String[] dArgs = { "Bill", "Paul" };
 		HumanMap humanMap = new HumanMap();
-		List<People> peopleList = Helper.initListAndParsing(args, dArgs, humanMap);
+		List<People> peopleList = Helper.initListAndParsing(args, dArgs,
+				humanMap);
 		if (peopleList.isEmpty()){
-			System.out.println("Error: no one is here..");
+			System.out.println("Error: peopleList is empty..");
+			System.out.println("'Helper.initListAndParsing' might've failed.");
 			System.exit(1);
 		}
-		int maleCount = Answers.getMalesNbr(peopleList);
-		People oldest = Answers.getOldest(peopleList);
-		dArgs = ComparePpl.getCompFullNames(dArgs, humanMap); // can change
+		/**
+		 * allows to change the names of the people to compare to display
+		 * the right names in the output.
+		 */
+		dArgs = ComparePpl.getCompFullNames(dArgs, humanMap);
 		if ( dArgs[0] == null || dArgs[1] == null){
 			dArgs[0] = "Bill";
 			dArgs[1] = "Paul";
 		}
-		long daysOlder = Answers.getDaysOlder(dArgs, humanMap);
 		if (ErrorHelper.getErrorCheck() > 0){
 
 		}
-		Answers.printAll(maleCount, oldest, daysOlder, dArgs);
+		Answers.printAll(peopleList, humanMap, dArgs);
     }
 }
