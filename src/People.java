@@ -1,18 +1,6 @@
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * {@code People} class is a class that contains information of a person
- *<p> This class contains the following information:
- *<ul>
- *<li>full name</li>
- *<li>name</li>
- *<li>LastName</li>
- *<li>age</li>
- *<li>birthDate</li>
- *
- */
-
 public class People {
 
 	//maybe make an array for the names ?

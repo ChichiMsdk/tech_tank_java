@@ -10,7 +10,6 @@ import java.time.temporal.ChronoUnit;
  * <p> This class contains the following useful information:
  * <ul><pre>{@code getCurrentYear}</pre></ul>
  * <ul><pre>{@code getAge}</pre></ul>
- * <ul><pre>{@code getDaysOlder}</pre></ul>
  *</p>
  *
  */

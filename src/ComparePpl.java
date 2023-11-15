@@ -3,8 +3,8 @@ import java.util.List;
 
 /**
  * ComparePpl class is used to compare two people and return their names
- * in a String array. 
- * Classes {@code People} and {@code HumanMap} must have been created before h
+ * in a String array.<br>
+ * Classes {@code People} and {@code HumanMap} must have been created before
  * using this class.
  * 
  */
@@ -13,10 +13,15 @@ public class ComparePpl{
 	private static People[] pplCompare = new People[2]; 
 	private static String[] pplNames = new String[2];
 
-	private static void setCompare(String[] dArgs, HumanMap humanMap) {
-		ComparePpl.pplCompare[0] = humanMap.getPeopleByNames(dArgs[0],
+	/**
+	 * {@code setCompare}<br>
+	 * Allows to set the {@code People} pplCompare objects to compare using<br>
+	 * their names.
+	 */
+	private static void setCompare(String[] names, HumanMap humanMap) {
+		ComparePpl.pplCompare[0] = humanMap.getPeopleByNames(names[0],
 				humanMap);
-		ComparePpl.pplCompare[1] = humanMap.getPeopleByNames(dArgs[1],
+		ComparePpl.pplCompare[1] = humanMap.getPeopleByNames(names[1],
 				humanMap);
 		if (pplCompare[0] == null || pplCompare[1] == null) {
 			pplNames[0] = null; 
@@ -37,9 +42,17 @@ public class ComparePpl{
 		ComparePpl.pplNames[0] = pplCompare[0].getLastName();
 		ComparePpl.pplNames[1] = pplCompare[1].getLastName();
 	}
-	// better if there is "N/A" in the output
-	public static String[] getCompFullNames(String[] dArgs, HumanMap humanMap){
-		ComparePpl.setCompare(dArgs, humanMap);
+
+	/**
+	 * {@code getCompFullNames}<br>
+	 * Allows to change the names of the people to compare to display
+	 * the right names<br> in the output, especially if "N/A" had to be used.
+	 * @see getCompNames
+	 * @see getCompLastNames
+	 */
+
+	public static String[] getCompFullNames(String[] names, HumanMap humanMap){
+		ComparePpl.setCompare(names, humanMap);
 		if (pplCompare[0] == null || pplCompare[1] == null) {
 			System.err.println("Error: with names to compare.");
 			System.err.println("Using default names..");
@@ -49,22 +62,28 @@ public class ComparePpl{
 		return pplNames;
 	}
 
-	public static String[] getCompLastNames(String[] dArgs, HumanMap humanMap){
-		ComparePpl.setCompare(dArgs, humanMap);
+	public static String[] getCompLastNames(String[] names, HumanMap humanMap){
+		ComparePpl.setCompare(names, humanMap);
 		setLastNames();
 		return pplNames;
 	}
 
-	public static String[] getCompNames(String[] dArgs, HumanMap humanMap){
-		ComparePpl.setCompare(dArgs, humanMap);
+	public static String[] getCompNames(String[] names, HumanMap humanMap){
+		ComparePpl.setCompare(names, humanMap);
 		setNames();
 		return pplNames;
 	}
 
+	/**
+	 * {@code getPplCompFromStr}<br>
+	 * Allows to retrieve the {@code People} objects from the {@code HumanMap}
+	 * using the names<br>passed as arguments.
+	 */
+
 	public static People[] getPplCompFromStr(HumanMap humanMap, 
-			String[] dArgs) {
-		if (dArgs.length == 2){
-			setCompare(dArgs, humanMap);
+			String[] names) {
+		if (names.length == 2){
+			setCompare(names, humanMap);
 		} else {
 			System.err.println("Error: not enough names to compare.");
 		}
@@ -73,12 +92,4 @@ public class ComparePpl{
 		}
 		return pplCompare;
 	}
-
-	public static String[] retrieveNames() {
-		if (pplNames[0] == null || pplNames[1] == null) {
-			System.err.println("Error: while trying to retrieve names.");
-		}
-		return pplNames;
-	}
-
 }

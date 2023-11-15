@@ -10,15 +10,14 @@ public class ErrorHelper{
 	public static final String ERROR_MSG = "Error occured.";
 	public static final String WRNG_COUNT = " warning(s).";
 	/**
-	 * The {@code flagError} is used to flag an error when it occurs.
-	 * so I can check when out of scope.
+	 * {@code flagError} is useful when to check when out of scope.
 	 */
 	public static void flagError(){
 		ErrorHelper.errorCheck += 1;
 		System.err.println(ErrorHelper.ERROR_MSG + " Flagged.");
 	}
 	/**
-	 * The {@code flagWarning} is used to flag a warning when it occurs.
+	 * {@code flagWarning}<br>
 	 * A warning is not as serious as an error, but it is still important to 
 	 * have an idea on how many happened without having to print them all.
 	 */
@@ -29,23 +28,21 @@ public class ErrorHelper{
 		}
 	}
 	/**
-	 * The {@code resetError} is used after taking care of the error or 
+	 * {@code resetError} is used after taking care of the error or 
 	 * atleast being aware of it.
 	 */
 	public static void resetError(){
 		ErrorHelper.errorCheck = 0;
 	}
 	/**
-	 * The {@code getErrorCheck} is used to check if there is an error
-	 * that has not been taken care of.
+	 * {@code getErrorCheck} check if there is still an error.
 	 * @return the errorCheck
 	 */
 	public static int getErrorCheck(){
 		return ErrorHelper.errorCheck;
 	}
 	/**
-	 * The {@code getWarningCount} is used to check how many warnings
-	 * have been flagged at the end of the program.
+	 * {@code getWarningCount} prints the number of warnings at the end.
 	 */
 	public static void getWarningCount(){
 		if (warningCount >= 1){

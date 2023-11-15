@@ -1,23 +1,14 @@
 import java.util.List;
-/**
- * The {@code Answers} class is used to print the answers to the questions
- * asked in the assignment but also recover the required values.
- * <p> This class contains the following useful methods:
- * </p>
- */
+
 public class Answers{
 		
 	/**
-	 * Prints the all answers to the questions asked in the assignment
+	 * {@code printAll} answers to the questions asked in the assignment
 	 * in a formatted way.
-	 * <p> This method adapts the output displayed to the user depending
-	 * on the actual values of the variables.</p>
-	 * <p><b>I.e:</b> if they are the same age or dArgs[0] is > dArgs[1] etc..
+	 * <p> This method adapts the output depending on the actual values 
+	 * of the variables.</p>
+	 * <p><b>I.e:</b> if they are the same age or names[0] is > names[1] etc..
 	 * </p>
-	 * @param maleCount the number of males in the list
-	 * @param oldest the oldest person in the list
-	 * @param daysOlder the number of days older between the two people
-	 * @param dArgs the names of the people to compare
 	 */
 	public static void printAll(List<People> peopleList, HumanMap humanMap,
 			String[] dArgs) {
@@ -52,14 +43,8 @@ public class Answers{
 		return maleCount;
 	}
 
-	/**
-	 * @param humanMap the map containing the people
-	 * @param dArgs the names of the people to compare
-	 * @return the number of days older between the two people
-	 */
-
-	public static long getDaysOlder(String[] dArgs, HumanMap humanMap){
-		People[] people = ComparePpl.getPplCompFromStr(humanMap, dArgs);
+	public static long getDaysOlder(String[] names, HumanMap humanMap){
+		People[] people = ComparePpl.getPplCompFromStr(humanMap, names);
 		if (people.length != 2){
 			ErrorHelper.flagError();
 			return -1;
@@ -81,27 +66,21 @@ public class Answers{
 		System.out.println("The oldest person is " + oldest.getFullName());
 	}
 
-	/**
-	 * Prints the oldest person between the two people passed as arguments.
-	 * @param daysOlder the number of days between the two people
-	 * @param dArgs the names of the people to compare
-	 */
-
-	public static void printOldestComp(long daysOlder, String[] dArgs) {
+	public static void printOldestComp(long daysOlder, String[] names) {
 		String day = "days";
 		if (daysOlder > 0) {
 			day = "day";
-			System.out.println( dArgs[0] + " is " + daysOlder + " " 
-					+ day + " older than " + dArgs[1] );
+			System.out.println( names[0] + " is " + daysOlder + " " 
+					+ day + " older than " + names[1] );
 		} else if ( daysOlder == 0) {
-			System.out.println(dArgs[0]+" and "+dArgs[1]+" are the same age");
+			System.out.println(names[0]+" and "+names[1]+" are the same age");
 		} else {
 			if (daysOlder == -1) {
 				day = "day";
 			}
 			daysOlder = daysOlder * -1;
-			System.out.println( dArgs[1] + " is " + daysOlder + " "
-					+ day + " older than " + dArgs[0] );
+			System.out.println( names[1] + " is " + daysOlder + " "
+					+ day + " older than " + names[0] );
 		}
 	}
 }

@@ -4,11 +4,7 @@ public class Helper{
 
 	/**
 	 * Returns a list of {@code People} objects.
-	 * {@code People} objects are created from the file in {@see ParsePeople}
-	 * and added to the list.
-	 * @param args the command line arguments
-	 * @param dArgs the default names
-	 * @return the list of {@code People} objects
+	 * {@code People} objects are created from file in and added to the list.
 	 */
 	public static List<People> initListAndParsing(String[] args,
 			String[] dArgs, HumanMap humanMap) {

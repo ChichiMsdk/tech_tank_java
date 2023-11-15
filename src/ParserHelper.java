@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 /**
- * {@code Parser} is used to parse the file and create the list of people.
- * <p> Its role is to ensure that the file is read correctly and that<br>
+ * {@code ParserHelper} is used to parse the file and create the list of people.
+ * <p> It contains methods to ensure that the file is read correctly and that<br>
  * it is formatted the right way which is: <br>
  * <b>"FirstName LastName", "Gender", "Date of Birth"</b></p>
- * It also fills a HashMap but it's probably not the best way to do it.
  * </br>
  */
 
@@ -18,8 +17,7 @@ public class ParserHelper{
 	private static List<String> lines = new ArrayList<>();
 
 	/**
-	 * Gets all the lines in {@code lines} and checks the arguments passed
-	 * then calls {@code addPeople} to fill the static HashMap in {@code HumanMap}
+	 * Gets all the lines in {@code lines} and checks the arguments passed.
 	 * @param args the arguments passed to the program
 	 * @param dArgs the names of the people to compare
 	 */

@@ -13,10 +13,9 @@ public class AddressBook {
 
 	/**
 	 * The {@code main} method is used to run the program.
-	 * It checks the number of arguments passed to the program
+	 * It checks the number of arguments passed<br> to the program
 	 * <pre><p>args must be 1 or 3 otherwise the program stops or uses default 
-	 * string</p></pre>
-	 * @param args the arguments passed to the program
+	 *String[] dArgs</p></pre>
 	 */
 
     public static void main(String[] args) {
@@ -34,10 +33,6 @@ public class AddressBook {
 			System.out.println("'Helper.initListAndParsing' might've failed.");
 			System.exit(1);
 		}
-		/**
-		 * allows to change the names of the people to compare to display
-		 * the right names in the output.
-		 */
 		dArgs = ComparePpl.getCompFullNames(dArgs, humanMap);
 		if ( dArgs[0] == null || dArgs[1] == null){
 			dArgs[0] = "Bill";
