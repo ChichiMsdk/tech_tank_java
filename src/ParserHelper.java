@@ -27,10 +27,12 @@ public class ParserHelper{
 			setLineList(lines);
 			if (lines.isEmpty()) {
 				System.err.println("Error: file is empty, no one is here..");
+				ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 				System.exit(1);
 			}
 		} catch (IOException e) {
 			System.err.println("Error reading file: " + e.getMessage());
+			ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 			System.exit(1);
 		}
 		if (args.length == 4 || args.length == 3){
@@ -56,8 +58,10 @@ public class ParserHelper{
 					+" one space allowed. Taking first and last\n"
 					+ str, ErrorHelper.getVerbose());
 			parts[0] = parts[0];
-			parts[1]  =parts[parts.length - 1];
+			parts[1] = parts[parts.length - 1];
 		}
+		if (parts.length < 2)
+			return null;
 		return parts;
 	}
 

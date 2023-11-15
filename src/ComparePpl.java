@@ -87,10 +87,12 @@ public class ComparePpl{
 		} else {
 			ErrorHelper.flagWrng("Error: not enough names to compare.",
 					ErrorHelper.getVerbose());
+			return null;
 		}
 		if (pplCompare[0] == null || pplCompare[1] == null) {
 			ErrorHelper.flagWrng("Error: not enough names to compare.",
 					ErrorHelper.getVerbose());
+			return null;
 		}
 		return pplCompare;
 	}

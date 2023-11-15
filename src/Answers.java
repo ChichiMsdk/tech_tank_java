@@ -12,9 +12,11 @@ public class Answers{
 	 */
 	public static void printAll(List<People> peopleList, HumanMap humanMap,
 			String[] dArgs) {
+		System.out.println("\n\n");
 		printMalesNbr(getMalesNbr(peopleList));
 		printOldestInList(getOldestInList(peopleList));
 		printOldestComp(getDaysOlder(dArgs, humanMap), dArgs);
+		System.out.println("\n\n");
 	}
 
 	public static People getOldestInList(List<People> peopleList) {
@@ -45,9 +47,9 @@ public class Answers{
 
 	public static long getDaysOlder(String[] names, HumanMap humanMap){
 		People[] people = ComparePpl.getPplCompFromStr(humanMap, names);
-		if (people.length != 2){
+		if (people == null || people.length != 2){
 			ErrorHelper.flagError();
-			return -1;
+			return 0;
 		}
 		long daysOlder = HelperDate.compareDays(people[0], people[1]);
 		return daysOlder;
@@ -67,6 +69,10 @@ public class Answers{
 	}
 
 	public static void printOldestComp(long daysOlder, String[] names) {
+		if (ErrorHelper.getErrorCheck() > 0) {
+			ErrorHelper.resetError();
+			return;
+		}
 		String day = "days";
 		if (daysOlder > 0) {
 			day = "day";

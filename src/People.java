@@ -14,7 +14,7 @@ public class People {
 	private int 		age;
 
 	public People (String genderString, String birthString,
-			String lastName, String name) {
+			String name, String lastName) {
 		this.name = name;
 		this.lastName = lastName;
 		this.fullName = name + " " + lastName;

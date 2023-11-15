@@ -16,7 +16,7 @@ public class ErrorHelper{
 	 */
 	public static void flagError(){
 		ErrorHelper.errorCheck += 1;
-		System.err.println(ErrorHelper.ERROR_MSG + " Flagged.");
+		flagWrng(ErrorHelper.ERROR_MSG + " Flagged.", getVerbose());
 	}
 
 	/**
@@ -52,9 +52,13 @@ public class ErrorHelper{
 		return ErrorHelper.errorCheck;
 	}
 
-	public static void getWarningCountEnd(){
+	public static void getWarningCountEnd(boolean verbose){
+		if(!verbose){
+			return;
+		}
 		if (warningCount >= 1){
-			System.err.println(ErrorHelper.WRNG_COUNT);
+			System.err.println(ErrorHelper.warningCount 
+					+ ErrorHelper.WRNG_COUNT);
 		}
 	}
 

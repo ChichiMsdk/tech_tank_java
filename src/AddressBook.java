@@ -37,6 +37,7 @@ public class AddressBook {
 		if (peopleList.isEmpty()){
 			System.out.println("Error: peopleList is empty..");
 			System.out.println("'Helper.initListAndParsing' might've failed.");
+			ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
 			System.exit(1);
 		}
 		dArgs = ComparePpl.getCompFullNames(dArgs, humanMap);
@@ -44,9 +45,7 @@ public class AddressBook {
 			dArgs[0] = "Bill";
 			dArgs[1] = "Paul";
 		}
-		if (ErrorHelper.getErrorCheck() > 0){
-
-		}
 		Answers.printAll(peopleList, humanMap, dArgs);
+		ErrorHelper.getWarningCountEnd(ErrorHelper.getVerbose());
     }
 }
