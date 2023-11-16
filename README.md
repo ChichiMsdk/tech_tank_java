@@ -13,5 +13,6 @@ Write a java program that reads an **AddressBook** file and answer the following
 ## Approach
 I tried to comply with the best coding practices found on this [link](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf) form oracle's website.
 <br>As I was new to the concept of **test coverage** and the JUnit framework, the tests included may not cover all aspects but should provide a basic demonstration of the functionality.
+<br>Made my first debut with JavaDoc to comment efficiently and get to learn how to better organize my codebase
 ## Feedback and suggestions
 Hoping everything needed is there! I had a lot of fun during this enriching experience. I look forward to any feedback or suggestions as improvements must be made!
