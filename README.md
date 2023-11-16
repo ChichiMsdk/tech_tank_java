@@ -9,6 +9,7 @@ Write a java program that reads an **AddressBook** file and answer the following
 - [x] Who is the oldest person in the address book?
 - [x] How many days older is Bill than Paul?
 > **Added** the possibility to specify the names we want as arguments of the program
+> <br>**Provided** 2 other files in /txt_files to further test the program
 ## Approach
 I tried to comply with the best coding practices found on this [link](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf) form oracle's website.
 <br>As I was new to the concept of **test coverage** and the JUnit framework, the tests included may not cover all aspects but should provide a basic demonstration of the functionality.
